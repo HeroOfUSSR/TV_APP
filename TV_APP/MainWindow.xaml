@@ -7,6 +7,105 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <StackPanel Margin="0,217,0,0" Grid.RowSpan="2"/>
+        <Image Source="/Resources/unnamed.png" Margin="39,20,39,19"/>
+        <Label x:Name="currentDateLabel" Content="Понедельник" HorizontalAlignment="Left" Margin="400,59,0,0" VerticalAlignment="Top" FontFamily="Arial Black" Height="90" Width="298" FontSize="36" Foreground="#FF172F3E" Grid.Row="1"/>
+
+        <Canvas Width="102" Height="102" Margin="267,217,431,115" Grid.RowSpan="2">
+            <Ellipse Width="8" Height="8" Fill="Black" Canvas.Top="46" Canvas.Left="46" />
+            <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="0" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="30" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="60" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="90" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="120" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="150" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="180" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="210" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="240" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="48" Fill="Black" Width="4" Height="8">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="270" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="300" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Canvas.Top="5" Canvas.Left="49" Fill="Black" Width="2" Height="6">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="2" CenterY="46" Angle="330" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+
+
+            <Rectangle x:Name="HourHand" Canvas.Top="21" Canvas.Left="48" 
+                            Fill="Black" Width="4" Height="30">
+                <Rectangle.RenderTransform>
+                    <RotateTransform x:Name="HourHand2" CenterX="2" CenterY="30" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="MinuteHand" Canvas.Top="6" Canvas.Left="49" 
+                        Fill="Black" Width="2" Height="45">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="1" CenterY="45" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="SecondHand" Canvas.Top="4" Canvas.Left="49" 
+                        Fill="Red" Width="1" Height="47">
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="0.5" CenterY="47" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Canvas>
+        
+        
+        <Label x:Name="currentTimeLabel" Content="12:22:22" HorizontalAlignment="Left" Margin="400,217,0,0" VerticalAlignment="Top" FontFamily="Arial Black" Height="90" Width="236" FontSize="48" Grid.RowSpan="2" Foreground="#FF172F3E"/>
     </Grid>
 </Window>
