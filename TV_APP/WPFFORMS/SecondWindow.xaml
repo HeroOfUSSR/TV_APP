@@ -8,6 +8,6 @@
         Title="SecondWindow" Height="450" Width="800">
     <Grid>
 
-        <MediaElement Margin="10" LoadedBehavior="Close"  Source="/WPFFORMS/171124_H1_006.mp4"/>
+        <MediaElement Margin="10" LoadedBehavior="Play"  Source="/WPFFORMS/171124_H1_006.mp4"/>                  
     </Grid>
 </Window>
