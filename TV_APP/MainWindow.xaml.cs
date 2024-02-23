@@ -10,6 +10,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace TV_APP
 {
@@ -26,37 +29,45 @@ namespace TV_APP
                 currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
                 currentDateLabel.Content = DateTime.Now.ToString("dddd");
             }, Dispatcher);
-            this.Loaded += new RoutedEventHandler(Clock_Loaded);
         }
 
-        void Clock_Loaded(object sender, RoutedEventArgs e)
+        private async void Grid_Initialized(object sender, EventArgs e)
         {
-            // set the datacontext to be today's date
-            DateTime now = DateTime.Now;
-            DataContext = now.Day.ToString();
 
-            // then set up a timer to fire at the start of tomorrow, so that we can update
-            // the datacontext
-            _timer = new DispatcherTimer();
-            _timer.Interval = new TimeSpan(1, 0, 0, 0) - now.TimeOfDay;
-            _timer.Tick += new EventHandler(OnDayChange);
-            _timer.Start();
+            var city_name = "Saint Petersburg";
+            var API_key = "ff1bad88f9167a7ca73c31ccdc382666";
+            var lon = "30.2642";
+            var lat = "59.8944";
 
-            // finally, seek the timeline, which assumes a beginning at midnight, to the appropriate
-            // offset
-            Storyboard sb = (Storyboard)PodClock.FindResource("sb");
-            sb.Begin(PodClock, HandoffBehavior.SnapshotAndReplace, true);
-            sb.Seek(PodClock, now.TimeOfDay, TimeSeekOrigin.BeginTime);
+            WebRequest request = WebRequest.Create($"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}&units=metric");
+
+            request.Method = "POST";
+
+            request.ContentType = "application/x-www-urlencoded";
+
+            WebResponse response = await request.GetResponseAsync();
+
+            string answer = string.Empty;
+
+            using(Stream s = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(s)) 
+                {
+                    answer = await reader.ReadToEndAsync();
+                }
+            }
+
+            response.Close();
+
+
+            OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
+
+            //weatherImage.Source = oW.weather.Icon;
         }
 
-        private void OnDayChange(object sender, EventArgs e)
+        private void richText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // date has changed, update the datacontext to reflect today's date
-            DateTime now = DateTime.Now;
-            DataContext = now.Day.ToString();
-            _timer.Interval = new TimeSpan(1, 0, 0, 0);
-        }
 
-    
+        }
     }
 }
