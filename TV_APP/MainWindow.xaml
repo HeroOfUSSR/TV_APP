@@ -6,8 +6,5 @@
         xmlns:local="clr-namespace:TV_APP"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-       <MediaElement Margin="9,10,10,10" LoadedBehavior="Play" Source="Video/171124_H1_006.mp4"/>
-        
-    </Grid>
+   
 </Window>

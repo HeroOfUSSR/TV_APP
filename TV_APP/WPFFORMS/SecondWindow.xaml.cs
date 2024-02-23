@@ -12,5 +12,16 @@ namespace TV_APP.WPFFORMS
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.ShowDialog();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

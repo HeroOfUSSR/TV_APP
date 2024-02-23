@@ -5,9 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TV_APP.WPFFORMS"
         mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="None"
         Title="SecondWindow" Height="450" Width="800">
+ 
     <Grid>
 
-        <MediaElement Margin="10" LoadedBehavior="Play"  Source="/WPFFORMS/171124_H1_006.mp4"/>                  
+        <MediaElement Margin="-2,0,4,5" LoadedBehavior="Play"   Source="Video/171124_H1_006.mp4 ">
+            <MediaElement.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Настройки" Click="MenuItem_Click"/>
+                    <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                </ContextMenu>
+            </MediaElement.ContextMenu>
+          
+            
+            
+        </MediaElement>
+
     </Grid>
 </Window>
