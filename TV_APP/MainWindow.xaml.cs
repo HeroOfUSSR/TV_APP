@@ -13,6 +13,7 @@ using System.Windows.Threading;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace TV_APP
 {
@@ -33,8 +34,6 @@ namespace TV_APP
 
         private async void Grid_Initialized(object sender, EventArgs e)
         {
-
-            var city_name = "Saint Petersburg";
             var API_key = "ff1bad88f9167a7ca73c31ccdc382666";
             var lon = "30.2642";
             var lat = "59.8944";
@@ -62,7 +61,16 @@ namespace TV_APP
 
             OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            //weatherImage.Source = oW.weather.Icon;
+
+            tempCurrentLabel.Content = $"{oW.main.temp}°C";
+
+            string filePath = $"icons/{oW.weather[0].icon}.svg";
+
+            using (StreamReader stream = new StreamReader(filePath))
+            {
+                weatherImage.StreamSource = stream.BaseStream;
+            }
+
         }
 
         private void richText_TextChanged(object sender, TextChangedEventArgs e)

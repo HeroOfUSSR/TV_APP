@@ -9,20 +9,30 @@ namespace TV_APP.OpenWeather
 {
     class OpenWeather
     {
+        public coord coord;
+
+        public weather[] weather;
+
         [JsonProperty("base")]
         public string Base;
 
+        public main main;
+
         public double visibility;
 
+        public wind wind;
+
+        public clouds clouds;
+
         public double dt;
+
+        public int timezone;
+
+        public int id;
 
         public string name;
 
         public int cod;
-
-        public weather weather;
-
-        public main main;
 
     }
 }
