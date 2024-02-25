@@ -20,6 +20,7 @@
         <Grid Margin="0,0,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Initialized="Grid_Initialized">
             <Grid.ColumnDefinitions>
             </Grid.ColumnDefinitions>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="1619,423,0,0" VerticalAlignment="Top" Height="192" Width="206" Click="Button_Click_1"/>
         </Grid>
         <Image Source="/Resources/unnamed.png" HorizontalAlignment="Center" Margin="0,47,0,63" Width="1444"/>
         <Label x:Name="currentDateLabel" HorizontalAlignment="Center"  Content="Понедельник" FontFamily="Arial Black" FontSize="128" Foreground="#FF172F3E" Grid.Row="1" Margin="0,31,0,155" Width="984" VerticalAlignment="Center"/>
