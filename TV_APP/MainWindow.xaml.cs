@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Npgsql;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -20,9 +22,6 @@ namespace TV_APP
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string strConnection = "Server=localhost; port=5432; user id=postgres; password=05989; database=TV_db;";
-        NpgsqlConnection vCon;
-        NpgsqlCommand vCom;
         private DispatcherTimer _timer;
         public MainWindow()
         {
@@ -72,17 +71,15 @@ namespace TV_APP
                 weatherImage.StreamSource = stream.BaseStream;
             }
 
-            vCon = new NpgsqlConnection();
-            vCon.ConnectionString = strConnection;
-            vCon.Open();
-
         }
 
         private void richText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            vCon = new NpgsqlConnection();
-            vCon.ConnectionString = strConnection;
-vCon.Open();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {  
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
