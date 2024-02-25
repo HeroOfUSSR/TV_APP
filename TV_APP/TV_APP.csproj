@@ -7,23 +7,36 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+	<ItemGroup>
+		<None Remove="Video\171124_H1_006.mp4" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="unnamed.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Video\171124_H1_006.mp4">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SharpVectors" Version="1.8.4" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="MainWindow.xaml.cs">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="unnamed.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\unnamed.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="SharpVectors" Version="1.8.4" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Icons\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\unnamed.png" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<Folder Include="Icons\" />
+	</ItemGroup>
 </Project>
