@@ -3,31 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         xmlns:local="clr-namespace:TV_APP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13*"/>
-            <ColumnDefinition Width="387*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="1*"/>
+
+            <RowDefinition Height="1*"/>
+
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Margin="0,217,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Initialized="Grid_Initialized">
+
+        <Grid Margin="0,0,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Initialized="Grid_Initialized">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="113*" />
-                <ColumnDefinition Width="687*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="weatherImage" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="107,117,0,0" VerticalAlignment="Top" Width="100"/>
         </Grid>
-        <Image Source="/Resources/unnamed.png" Margin="13,20,39,19" Grid.Column="1"/>
-        <Label x:Name="currentDateLabel" Content="Понедельник" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial Black" Height="46" Width="298" FontSize="36" Foreground="#FF172F3E" Grid.Row="1" Grid.Column="1" Margin="225,70,0,0"/>
+        <Image Source="/Resources/unnamed.png" HorizontalAlignment="Center" Margin="0,47,0,63" Width="1444"/>
+        <Label x:Name="currentDateLabel" HorizontalAlignment="Center"  Content="Понедельник" FontFamily="Arial Black" FontSize="128" Foreground="#FF172F3E" Grid.Row="1" Margin="0,31,0,155" Width="984" VerticalAlignment="Center"/>
+        <svgc:SvgViewbox x:Name="weatherImage" Margin="626,49,1014,61" Grid.Row="2"/>
 
-
-        <Label x:Name="currentTimeLabel" Content="12:22:22" HorizontalAlignment="Left" Margin="256,10,0,0" VerticalAlignment="Top" FontFamily="Arial Black" Height="90" Width="236" FontSize="48" Foreground="#FF172F3E" Grid.Column="1" Grid.Row="1"/>
-        <Label x:Name="tempCurrentLabel" Content="12 C" HorizontalAlignment="Left" Margin="325,132,0,0" VerticalAlignment="Top" FontFamily="Arial Black" Height="67" Width="236" FontSize="48" Foreground="#FF172F3E" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="currentTimeLabel" Content="12:22:22" HorizontalAlignment="Left" Margin="644,177,0,27" FontFamily="Arial Black" Width="620" FontSize="128" Foreground="#FF172F3E" Grid.Row="1"/>
+        <Label x:Name="tempCurrentLabel" Content="12 C" HorizontalAlignment="Left" Margin="963,105,0,104" FontFamily="Arial Black" FontSize="108" Foreground="#FF172F3E" Grid.Row="2" Width="307"/>
     </Grid>
 </Window>
