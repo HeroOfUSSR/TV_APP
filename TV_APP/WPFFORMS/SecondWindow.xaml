@@ -7,20 +7,18 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
-        Title="SecondWindow" Height="450" Width="800">
+        Title="SecondWindow" Height="1080" Width="1920">
  
     <Grid>
 
-        <MediaElement Margin="-2,0,4,5" LoadedBehavior="Play"   Source="Video/171124_H1_006.mp4 ">
+        <MediaElement Margin="-2,0,4,4"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4"  >
             <MediaElement.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Настройки" Click="MenuItem_Click"/>
                     <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
                 </ContextMenu>
             </MediaElement.ContextMenu>
-          
-            
-            
+           
         </MediaElement>
 
     </Grid>

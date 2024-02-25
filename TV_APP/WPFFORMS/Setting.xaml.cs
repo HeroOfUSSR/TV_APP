@@ -20,9 +20,13 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting : Window
     {
-        public Setting()
+        public MediaElement mediaElement { get; set;}
+
+        public Setting(MediaElement mediaElement)
         {
             InitializeComponent();
+            this.mediaElement = mediaElement;  
+           
         }
 
 
@@ -33,33 +37,36 @@ namespace TV_APP.WPFFORMS
         }
 
      
-
+        
      
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+           
 
-        
-            try
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Media files (*.avi;*.mp4;*.wmv)|*.avi;*.mp4;*.wmv";
+           if (openFileDialog.ShowDialog() == false)
             {
-                OpenFileDialog fd = new OpenFileDialog();
-          
-                fd.Filter = "MP3 Files (*.mp3)|*.mp3|MP4 File (*.mp4)|*.mp4|3GP File (*.3gp)|*.3gp|Audio File (*.wma)|*.wma|MOV File (*.mov)|*.mov|AVI File (*.avi)|*.avi|Flash Video(*.flv)|*.flv|Video File (*.wmv)|*.wmv|MPEG-2 File (*.mpeg)|*.mpeg|WebM Video (*.webm)|*.webm|All files (*.*)|*.*";
-        
-                fd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-             
-                fd.ShowDialog();
-               
-                string filename = fd.FileName;
-                VideoList.Items.Add(filename);
-
+                return;
             }
-            catch (Exception e1)
-            {
-                System.Console.WriteLine("Error Text: " + e1.Message);
-            }
+            mediaElement.Source = new Uri(openFileDialog.FileName);
+           mediaElement.Play();
+            ListBoxItem item = new ListBoxItem();
+            var name = openFileDialog.FileName;
+            item.Content = name;
+            VideoList.Items.Add(item);
 
-            
+
+        }
+
+        private void VideoList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+          mediaElement.Stop();
+          string mediaPath = ((ListBoxItem)VideoList.SelectedValue).Content.ToString();
+          mediaElement.Source = (new Uri(mediaPath));
+          mediaElement.Play();
         }
     }
 }
