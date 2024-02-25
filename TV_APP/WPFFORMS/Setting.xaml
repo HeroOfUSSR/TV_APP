@@ -11,7 +11,7 @@
             <RowDefinition Height="80*"/>
             <RowDefinition Height="137*"/>
         </Grid.RowDefinitions>
-        <ListBox Name="VideoList" Margin="10,25,25,248" Grid.RowSpan="2" MouseDoubleClick="VideoList_MouseDoubleClick" >
+        <ListBox x:Name="VideoList" Margin="10,25,25,248" Grid.RowSpan="2"  SelectionChanged="VideoList_SelectionChanged" >
            
         </ListBox>
         <Button Content="Добавить видео" HorizontalAlignment="Left" Margin="23,45,0,0" Grid.Row="1" VerticalAlignment="Top" Height="47" Width="93" Click="Button_Click" />

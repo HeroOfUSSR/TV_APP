@@ -22,10 +22,14 @@ namespace TV_APP.WPFFORMS
     {
         public MediaElement mediaElement { get; set;}
 
+       
+
         public Setting(MediaElement mediaElement)
         {
             InitializeComponent();
-            this.mediaElement = mediaElement;  
+            this.mediaElement = mediaElement;
+            
+
            
         }
 
@@ -33,11 +37,12 @@ namespace TV_APP.WPFFORMS
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            VideoList.Items.Remove(VideoList.SelectedItem);
+            VideoList.Items.RemoveAt(VideoList.SelectedIndex);
+
         }
 
-     
-        
+    
+               
      
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -51,22 +56,28 @@ namespace TV_APP.WPFFORMS
                 return;
             }
             mediaElement.Source = new Uri(openFileDialog.FileName);
-           mediaElement.Play();
-            ListBoxItem item = new ListBoxItem();
+            mediaElement.Play();
+          
             var name = openFileDialog.FileName;
-            item.Content = name;
-            VideoList.Items.Add(item);
+            VideoList.Items.Add(name);
 
 
         }
 
-        private void VideoList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
+    
 
-          mediaElement.Stop();
-          string mediaPath = ((ListBoxItem)VideoList.SelectedValue).Content.ToString();
-          mediaElement.Source = (new Uri(mediaPath));
-          mediaElement.Play();
+        private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            mediaElement.Stop();
+            if (VideoList.SelectedItem == null)
+            {
+                return;
+            }
+
+            string mediaPath = VideoList.SelectedItem.ToString();
+            mediaElement.Source = (new Uri(mediaPath));
+            mediaElement.Play();
         }
     }
 }

@@ -9,21 +9,20 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class SecondWindow : Window
     {
+        private Setting setting;
+
         public SecondWindow()
         {
        
 
 
             InitializeComponent();
-            Mypleer.Play();
-
-            Setting setting = new Setting(Mypleer);
+            setting = new Setting(Mypleer);
             setting.Show();
 
         }
 
         
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Setting setting = new Setting(Mypleer);
@@ -36,9 +35,17 @@ namespace TV_APP.WPFFORMS
           Application.Current.Shutdown();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+        private void Mypleer_MediaEnded(object sender, RoutedEventArgs e)
         {
-
+            var count = setting.VideoList.Items.Count;
+            var index= setting.VideoList.SelectedIndex;
+            if (index+1>=count)
+            {
+                index = -1;
+            }
+            setting.VideoList.SelectedIndex = index+1;
+         
         }
     }
 }

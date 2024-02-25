@@ -11,7 +11,7 @@
  
     <Grid>
 
-        <MediaElement Margin="-2,0,4,4"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4"  >
+        <MediaElement Margin="-2,0,4,4"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4" MediaEnded="Mypleer_MediaEnded">
             <MediaElement.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Настройки" Click="MenuItem_Click"/>
