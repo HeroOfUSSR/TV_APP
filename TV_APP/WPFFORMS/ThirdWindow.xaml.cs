@@ -43,7 +43,7 @@ namespace TV_APP.WPFFORMS
 
             if (table.Rows.Count > 0)
             {
-
+                int a;
             }
         }
     }
