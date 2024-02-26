@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Npgsql;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -21,7 +22,6 @@ namespace TV_APP
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private DispatcherTimer _timer;
         public MainWindow()
         {
@@ -87,7 +87,5 @@ namespace TV_APP
             var newForm = new SecondWindow();
             newForm.Show();
         }
-
-        
     }
 }
