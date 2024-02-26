@@ -9,7 +9,7 @@
     <Grid Initialized="Grid_Initialized">
         <StackPanel Margin="39,26,762,25">
             <Image Height="739" Width="1117"/>
-            <Label Content="Label" Height="158" Width="1113" FontSize="48"/>
+            <Label x:Name="newsLabel" Content="Label" Height="158" Width="1113" FontSize="48"/>
             <Label Content="Label" Height="116" Width="1113" FontSize="36"/>
         </StackPanel>
     </Grid>

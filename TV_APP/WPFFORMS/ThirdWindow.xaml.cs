@@ -29,22 +29,31 @@ namespace TV_APP.WPFFORMS
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
+            
+
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             var currentDate = DateTime.Now;
             DataTable table = new DataTable();
 
-            string request = $"SELECT Name_Event FROM Events WHERE Date_Event={currentDate.ToString("yyyy/mm/dd")}";
+            string request = $"SELECT Name_Event FROM Events WHERE Date_Event={currentDate.ToString("yyyy-mm-dd")}";
             
             SqlCommand comm = new SqlCommand(request, db.GetConnection());
 
             adapter.SelectCommand = comm;
             adapter.Fill(table);
 
-            if (table.Rows.Count > 0)
+
+            SqlDataReader reader = comm.ExecuteReader();
+
+            while (reader.Read())
             {
-                int a;
+                if (table.Rows.Count > 0)
+                {
+                    newsLabel.Content = reader["Name_Event"].ToString();
+                }
             }
+            
         }
     }
 }

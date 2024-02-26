@@ -84,7 +84,7 @@ namespace TV_APP
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var newForm = new SecondWindow();
+            var newForm = new ThirdWindow();
             newForm.Show();
         }
 
