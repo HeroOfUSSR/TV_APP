@@ -9,7 +9,7 @@ namespace TV_APP
 {
     public class DBConnection
     {
-        SqlConnection strConnection = new SqlConnection(@"Data Source=DESKTOP-DDO84UQ; Initial Catalog=TV_db; Integrated Security=True");
+        SqlConnection strConnection = new SqlConnection(@"Data Source=ORIT-14\SQLEXPRESS; Initial Catalog=TV_db; User id=Student ORIT; Password=DabiduN");
 
         public void OpenConnection()
         {

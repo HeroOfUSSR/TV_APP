@@ -38,6 +38,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Icons\" />
+	  <Folder Include="Icons\" />
 	</ItemGroup>
 </Project>

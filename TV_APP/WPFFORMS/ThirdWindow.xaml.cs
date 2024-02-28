@@ -29,20 +29,21 @@ namespace TV_APP.WPFFORMS
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
-            
+
+            db.OpenConnection();
 
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             var currentDate = DateTime.Now;
             DataTable table = new DataTable();
 
-            string request = $"SELECT Name_Event FROM Events WHERE Date_Event={currentDate.ToString("yyyy-mm-dd")}";
+            string request = $"SELECT Name_Event FROM Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
             
             SqlCommand comm = new SqlCommand(request, db.GetConnection());
 
             adapter.SelectCommand = comm;
-            adapter.Fill(table);
 
+            adapter.Fill(table);
 
             SqlDataReader reader = comm.ExecuteReader();
 
@@ -53,7 +54,19 @@ namespace TV_APP.WPFFORMS
                     newsLabel.Content = reader["Name_Event"].ToString();
                 }
             }
-            
+
+            db.CloseConnection();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var setting3 = new Setting3();
+            setting3.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -64,7 +64,8 @@ namespace TV_APP
 
             tempCurrentLabel.Content = $"{oW.main.temp}°C";
 
-            string filePath = $"icons/{oW.weather[0].icon}.svg";
+            string filePath = $"C:/Users/student_orit/source/repos/TV_APP/TV_APP/Icons/Placeholder.svg";
+                //{oW.weather[0].icon}.svg";
 
             using (StreamReader stream = new StreamReader(filePath))
             {

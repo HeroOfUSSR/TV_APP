@@ -11,6 +11,7 @@ namespace TV_APP.WPFFORMS
     {
         private Setting setting;
 
+
         public SecondWindow()
         {
        
@@ -46,6 +47,12 @@ namespace TV_APP.WPFFORMS
             }
             setting.VideoList.SelectedIndex = index+1;
          
+        }
+
+        private void nextButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newForm = new ThirdWindow();
+            newForm.Show();
         }
     }
 }

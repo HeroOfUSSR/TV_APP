@@ -7,10 +7,21 @@
         mc:Ignorable="d"
         Title="ThirdWindow" Height="1080" Width="1920">
     <Grid Initialized="Grid_Initialized">
-        <StackPanel Margin="39,26,762,25">
-            <Image Height="739" Width="1117"/>
-            <Label x:Name="newsLabel" Content="Label" Height="158" Width="1113" FontSize="48"/>
-            <Label Content="Label" Height="116" Width="1113" FontSize="36"/>
+        <StackPanel Margin="10,26,970,25">
+            <StackPanel.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Настройки" Click="MenuItem_Click"/>
+                    <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                </ContextMenu>
+            </StackPanel.ContextMenu>
+            <Image Height="739" Width="920"/>
+            <Label x:Name="newsLabel" Content="Событие" Height="158" Width="920" FontSize="48"/>
+            <Label x:Name="dateLabel" Content="Дата" Height="116" Width="920" FontSize="36"/>
+        </StackPanel>
+
+        <StackPanel Margin="965,26,10,25">
+            <Label x:Name="factLabel" Content="Интересный факт" Height="263" Width="920" FontSize="48"/>
+            <Image Height="739" Width="936"/>
         </StackPanel>
     </Grid>
 </Window>
