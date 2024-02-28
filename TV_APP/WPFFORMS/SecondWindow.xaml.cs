@@ -19,14 +19,15 @@ namespace TV_APP.WPFFORMS
 
             InitializeComponent();
             setting = new Setting(Mypleer);
-            setting.Show();
+            Settings settings = new Settings(Mypleer);
+            settings.Show();
 
         }
 
         
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Setting setting = new Setting(Mypleer);
+            Settings setting = new Settings(Mypleer);
             setting.ShowDialog();
 
         }

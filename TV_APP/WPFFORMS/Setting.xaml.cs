@@ -22,28 +22,17 @@ namespace TV_APP.WPFFORMS
     {
         public MediaElement mediaElement { get; set;}
 
-       
-
         public Setting(MediaElement mediaElement)
         {
             InitializeComponent();
             this.mediaElement = mediaElement;
-            
-
-           
         }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
             VideoList.Items.RemoveAt(VideoList.SelectedIndex);
-
         }
-
-    
-               
-     
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

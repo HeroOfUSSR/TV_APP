@@ -14,9 +14,9 @@
 
         <Frame x:Name="OptionFrame" Grid.Row="1" Background="LightGoldenrodYellow"/>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Слайд #1" Width="170" Height="30"/>
-            <Button Content="Слайд #2" Width="170" Height="30"/>
-            <Button Content="Слайд #3" Width="170" Height="30"/>
+            <Button Content="Слайд #1" Width="170" Height="30" Click="Button_Click"/>
+            <Button Content="Слайд #2" Width="170" Height="30" Click="Button_Click_1"/>
+            <Button Content="Слайд #3" Width="170" Height="30" Click="Button_Click_2"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -21,8 +21,10 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting3 : Window
     {
+
         static readonly ImageSourceConverter imageSourceConverter
             = new ImageSourceConverter();
+
         public Setting3()
         {
             InitializeComponent();

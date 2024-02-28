@@ -21,7 +21,6 @@ namespace TV_APP
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private DispatcherTimer _timer;
         public MainWindow()
         {
@@ -58,13 +57,11 @@ namespace TV_APP
 
             response.Close();
 
-
             OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
-
 
             tempCurrentLabel.Content = $"{oW.main.temp}°C";
 
-            string filePath = $"C:/Users/student_orit/source/repos/TV_APP/TV_APP/Icons/Placeholder.svg";
+            string filePath = $"C:/Users/ALEXE/source/repos/TV_APP/TV_APP/Icons/{oW.weather[0].icon}.svg";
                 //{oW.weather[0].icon}.svg";
 
             using (StreamReader stream = new StreamReader(filePath))
@@ -85,7 +82,7 @@ namespace TV_APP
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var newForm = new ThirdWindow();
+            var newForm = new SecondWindow();
             newForm.Show();
         }
 
