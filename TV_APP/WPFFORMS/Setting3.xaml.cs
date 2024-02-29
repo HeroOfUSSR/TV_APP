@@ -22,7 +22,7 @@ namespace TV_APP.WPFFORMS
     /// <summary>
     /// Логика взаимодействия для Setting3.xaml
     /// </summary>
-    public partial class Setting3 : Window
+    public partial class Setting3 : Page
     {
         DBConnection db = new DBConnection();
 
@@ -45,7 +45,7 @@ namespace TV_APP.WPFFORMS
 
             imagePreview.Source = (ImageSource)imageSourceConverter.ConvertFrom(new Uri(openFileDialog.FileName));
 
-           BitmapImage bitmapImage = openFileDialog;
+           //BitmapImage bitmapImage = openFileDialog;
         }
 
         private void imageButton2_Click(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace TV_APP.WPFFORMS
             var eventDate = dateEventPicker.SelectedDate;
 
 
-            var eventImage = BufferFromImage(imagePreview.Source);
+            //var eventImage = BufferFromImage(imagePreview.Source);
             db.OpenConnection();
 
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -76,7 +76,7 @@ namespace TV_APP.WPFFORMS
             {
                 if (table.Rows.Count > 0)
                 {
-                    newsLabel.Content = reader["Name_Event"].ToString();
+                    //newsLabel.Content = reader["Name_Event"].ToString();
                 }
             }
 

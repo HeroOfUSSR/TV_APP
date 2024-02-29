@@ -60,8 +60,7 @@ namespace TV_APP.WPFFORMS
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var setting3 = new Setting3();
-            setting3.Show();
+
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

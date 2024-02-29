@@ -18,7 +18,7 @@ namespace TV_APP.WPFFORMS
     /// <summary>
     /// Логика взаимодействия для Setting.xaml
     /// </summary>
-    public partial class Setting : Window
+    public partial class Setting : Page
     {
         public MediaElement mediaElement { get; set;}
 

@@ -9,16 +9,17 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class SecondWindow : Window
     {
-        private Setting setting;
-
-
+       // private Setting setting;
+        private Settings settings1;
+        private Setting setting; 
         public SecondWindow()
         {
-       
 
+         
 
             InitializeComponent();
             setting = new Setting(Mypleer);
+
             Settings settings = new Settings(Mypleer);
             settings.Show();
 
@@ -47,7 +48,9 @@ namespace TV_APP.WPFFORMS
                 index = -1;
             }
             setting.VideoList.SelectedIndex = index+1;
-         
+            setting.mediaElement.Play();
+
+
         }
 
         private void nextButton_Click(object sender, RoutedEventArgs e)

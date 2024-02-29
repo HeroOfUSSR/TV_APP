@@ -19,13 +19,15 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Settings : Window
     {
-        List<Window> forFrame;
+        List<Page> forFrame = new List<Page>();
 
         public Settings(MediaElement player)
         {
             InitializeComponent();
 
+
             forFrame.Add(new Setting(player));
+            //this.forFrame=new List<Page>();
             forFrame.Add(new Setting3());
 
 
