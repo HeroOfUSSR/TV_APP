@@ -13,8 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TV_APP_Context.DBContext;
-using TV_APP_Context.Models;
 
 namespace TV_APP.WPFFORMS
 {
@@ -31,7 +29,7 @@ namespace TV_APP.WPFFORMS
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
-            using (var db = new TVContext())
+            /*using (var db = new TVContext())
             {
                 db.Configuration.ProxyCreationEnabled = false;
 

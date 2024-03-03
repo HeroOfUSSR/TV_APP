@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -31,18 +32,18 @@ namespace TV_APP
                 currentDateLabel.Content = DateTime.Now.ToString("dddd");
             }, Dispatcher);
 
-            using (var db = new TVContext())
+            using (var db = new TV_dbContext())
             {
                 //db.Configuration.ProxyCreationEnabled = false;
 
                 var currentDate = DateTime.Now.ToString("yyyyMMdd");
-                var found = db.Events.Any(x => x.Date_Event == currentDate);
+                var found = db.Events.Any(x => x.DateEvent == currentDate);
                 if (found)
                 {
 
-                    var eventName = db.Events.Where(x => x.Date_Event == currentDate);
+                    var eventName = db.Events.FirstOrDefault(x => x.DateEvent == currentDate);
 
-                    newsLabel.Content = eventName.Select(x => x.Name_Event);
+                    newsLabel.Content = eventName.NameEvent;
                 }
 
             }
