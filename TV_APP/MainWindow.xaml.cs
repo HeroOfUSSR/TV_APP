@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using TV_APP.WPFFORMS;
+using TV_APP_Context.DBContext;
 
 namespace TV_APP
 {
@@ -29,6 +30,22 @@ namespace TV_APP
                 currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
                 currentDateLabel.Content = DateTime.Now.ToString("dddd");
             }, Dispatcher);
+
+            using (var db = new TVContext())
+            {
+                //db.Configuration.ProxyCreationEnabled = false;
+
+                var currentDate = DateTime.Now.ToString("yyyyMMdd");
+                var found = db.Events.Any(x => x.Date_Event == currentDate);
+                if (found)
+                {
+
+                    var eventName = db.Events.Where(x => x.Date_Event == currentDate);
+
+                    newsLabel.Content = eventName.Select(x => x.Name_Event);
+                }
+
+            }
         }
 
         private async void Grid_Initialized(object sender, EventArgs e)
@@ -61,7 +78,7 @@ namespace TV_APP
 
             tempCurrentLabel.Content = $"{oW.main.temp}°C";
 
-            string filePath = $"C:/Users/student_orit/source/repos/TV_APP/TV_APP/Icons/{oW.weather[0].icon}.svg";
+            string filePath = $"Icons/{oW.weather[0].icon}.svg";
                 //{oW.weather[0].icon}.svg";
 
             using (StreamReader stream = new StreamReader(filePath))
@@ -69,6 +86,7 @@ namespace TV_APP
                 weatherImage.StreamSource = stream.BaseStream;
             }
 
+            
         }
 
         private void richText_TextChanged(object sender, TextChangedEventArgs e)

@@ -24,7 +24,7 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting3 : Page
     {
-        DBConnection db = new DBConnection();
+        //DBConnection db = new DBConnection();
 
         static readonly ImageSourceConverter imageSourceConverter
             = new ImageSourceConverter();
@@ -50,11 +50,13 @@ namespace TV_APP.WPFFORMS
 
         private void imageButton2_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var eventName = nameEventTextbox.Text;
             var eventDate = dateEventPicker.SelectedDate;
 
+            JpegBitmapEncoder encoderJpeg = new JpegBitmapEncoder();
 
-            //var eventImage = BufferFromImage(imagePreview.Source);
+            var eventImage = ImageSourceToBytes(encoderJpeg, imagePreview.Source);
             db.OpenConnection();
 
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -62,7 +64,7 @@ namespace TV_APP.WPFFORMS
             var currentDate = DateTime.Now;
             DataTable table = new DataTable();
 
-            string request = $"INSERT INTO Events (Name_Event, Date_Event, Picture_Event) VALUES () Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
+            string request = $"INSERT INTO Events (Name_Event, Date_Event, Picture_Event) VALUES ({eventName},{eventDate},{eventImage}) Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
 
             SqlCommand comm = new SqlCommand(request, db.GetConnection());
 
@@ -80,23 +82,26 @@ namespace TV_APP.WPFFORMS
                 }
             }
 
-            db.CloseConnection();
+            db.CloseConnection();*/
         }
 
-        public byte[] BufferFromImage(BitmapImage imageSource)
+        public static byte[] ImageSourceToBytes(BitmapEncoder encoder, ImageSource imageSource)
         {
-            Stream stream = imageSource.StreamSource;
-            byte[] buffer = null;
+            byte[] bytes = null;
+            var bitmapSource = imageSource as BitmapSource;
 
-            if (stream != null && stream.Length > 0)
+            if (bitmapSource != null)
             {
-                using (BinaryReader br = new BinaryReader(stream))
+                encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+
+                using (var stream = new MemoryStream())
                 {
-                    buffer = br.ReadBytes((Int32)stream.Length);
+                    encoder.Save(stream);
+                    bytes = stream.ToArray();
                 }
             }
 
-            return buffer;
+            return bytes;
         }
     }
 }

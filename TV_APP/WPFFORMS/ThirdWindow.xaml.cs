@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TV_APP_Context.DBContext;
+using TV_APP_Context.Models;
 
 namespace TV_APP.WPFFORMS
 {
@@ -21,7 +23,7 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class ThirdWindow : Window
     {
-        DBConnection db = new DBConnection();
+        //DBConnection db = new DBConnection();
         public ThirdWindow()
         {
             InitializeComponent();
@@ -29,7 +31,22 @@ namespace TV_APP.WPFFORMS
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
+            using (var db = new TVContext())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
 
+                var currentDate = DateTime.Now.ToString("yyyyMMdd");
+                var found = db.Events.Any(x => x.Date_Event == currentDate);
+                if (found)
+                {
+
+                    var eventName = db.Events.Where(x => x.Date_Event == currentDate);
+
+                    newsLabel.Content = eventName.Select(x => x.Name_Event);
+                }
+                
+            }
+            /*
             db.OpenConnection();
 
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -55,7 +72,7 @@ namespace TV_APP.WPFFORMS
                 }
             }
 
-            db.CloseConnection();
+            db.CloseConnection();*/
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

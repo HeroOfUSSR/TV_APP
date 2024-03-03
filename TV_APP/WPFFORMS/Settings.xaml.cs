@@ -21,13 +21,12 @@ namespace TV_APP.WPFFORMS
     {
         List<Page> forFrame = new List<Page>();
 
-        public Settings(MediaElement player)
+        public Settings(MediaElement mediaElement)
         {
             InitializeComponent();
 
 
-            forFrame.Add(new Setting(player));
-            //this.forFrame=new List<Page>();
+            forFrame.Add(new Setting(mediaElement));
             forFrame.Add(new Setting3());
 
 

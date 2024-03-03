@@ -13,10 +13,14 @@
             <RowDefinition Height="137*"/>
         </Grid.RowDefinitions>
         <ListBox x:Name="VideoList" Margin="10,25,25,248" Grid.RowSpan="2"  SelectionChanged="VideoList_SelectionChanged" >
-           
+
         </ListBox>
-        <Button Content="Добавить видео" HorizontalAlignment="Left" Margin="23,45,0,0" Grid.Row="1" VerticalAlignment="Top" Height="47" Width="93" Click="Button_Click" />
-        <Button Content="Удалить видео" Click="Button_Click_1" HorizontalAlignment="Left" Margin="374,45,0,0" Grid.Row="1" VerticalAlignment="Top" Height="47" Width="93"/>
+        <Button Content="Добавить видео" HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Click="Button_Click" />
+        <Button Content="Удалить видео" Click="Button_Click_1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Margin="0,114,0,0"/>
+        <Button Content="Сохранить плейлист в базу данных" HorizontalAlignment="Center" Margin="0,206,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_2"/>
+        <Button Content="Загрузить плейлист из базы данных" HorizontalAlignment="Center" Margin="0,235,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_3"/>
+        <Label x:Name="testLabel_2" Content="Label" HorizontalAlignment="Left" Margin="35,178,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="testLabel" Content="Label" HorizontalAlignment="Left" Margin="35,152,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
 
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
+using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting : Page
     {
+        //DBConnection db = new DBConnection();
         public MediaElement mediaElement { get; set;}
 
         public Setting(MediaElement mediaElement)
@@ -67,6 +70,65 @@ namespace TV_APP.WPFFORMS
             string mediaPath = VideoList.SelectedItem.ToString();
             mediaElement.Source = (new Uri(mediaPath));
             mediaElement.Play();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            /*if (VideoList.Items.Count == 0)
+            
+                return;
+            }
+            else
+            {
+                var count = VideoList.Items.Count;
+
+                db.OpenConnection();
+
+                for (int i = 0; i <= count; i++)
+                {
+                    VideoList.SelectedIndex = i+1;
+
+                    byte[] mediaPath = File.ReadAllBytes(VideoList.SelectedItem.ToString());
+
+                    //byte[] mediaPath = StreamFile(VideoList.SelectedItem.ToString());
+
+                    testLabel.Content = VideoList.SelectedItem.ToString();
+
+                    testLabel_2.Content = mediaPath;
+
+                    string request = $"INSERT INTO Videos (ID_Video, Source_Video) VALUES ({i+1}, {mediaPath})";
+
+                    SqlCommand comm = new SqlCommand(request, db.GetConnection());
+
+                    SqlParameter param = comm.Parameters.Add("@Content", System.Data.SqlDbType.VarBinary);
+
+                    param.Value = mediaPath;
+
+                    comm.ExecuteNonQuery();
+
+                }
+
+                MessageBox.Show("Плейлист загружен в базу данных", "АЕЕЕ", MessageBoxButton.OK);
+
+                db.CloseConnection();
+            }*/
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private byte[] StreamFile(string filename)
+        {
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            byte[] ImageData = new byte[fs.Length];
+
+            fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
+
+            fs.Close();
+            return ImageData; 
         }
     }
 }
