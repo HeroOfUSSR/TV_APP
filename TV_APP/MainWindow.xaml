@@ -29,8 +29,6 @@
 
         <Label x:Name="currentTimeLabel" Content="12:22:22" HorizontalAlignment="Left" Margin="644,177,0,27" FontFamily="Arial Black" Width="620" FontSize="128" Foreground="#FF172F3E" Grid.Row="1"/>
         <Label x:Name="tempCurrentLabel" Content="12 C" HorizontalAlignment="Left" Margin="963,105,0,104" FontFamily="Arial Black" FontSize="108" Foreground="#FF172F3E" Grid.Row="2" Width="307"/>
-      
-        <TextBlock x:Name="newsTexblock" Margin="88,219,193,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

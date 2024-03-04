@@ -53,7 +53,7 @@ namespace TV_APP
 
             OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            tempCurrentLabel.Content = $"{oW.main.temp}°C";
+            tempCurrentLabel.Content = $"{Math.Round(oW.main.temp)}°C";
 
             string filePath = $"Icons/{oW.weather[0].icon}.svg";
             //{oW.weather[0].icon}.svg";

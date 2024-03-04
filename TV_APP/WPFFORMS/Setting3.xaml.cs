@@ -39,15 +39,13 @@ namespace TV_APP.WPFFORMS
         public void imageButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Media files (*.BMP; *.JPEG; *.PNG; *.TIFF)|*.BMP; *.JPEG; *.PNG; *.TIFF";
+            openFileDialog.Filter = "Media files (*.BMP; *.JPEG; *.PNG; *.TIFF; *.JPG)|*.BMP; *.JPEG; *.PNG; *.TIFF; *.JPG";
             if (openFileDialog.ShowDialog() == false)
             {
                 return;
             }
 
             imagePreview.Source = (ImageSource)imageSourceConverter.ConvertFrom(new Uri(openFileDialog.FileName));
-
-           //BitmapImage bitmapImage = openFileDialog;
         }
 
         private void imageButton2_Click(object sender, RoutedEventArgs e)
@@ -69,39 +67,8 @@ namespace TV_APP.WPFFORMS
                 db.Events.Add(newEvent);
                 db.SaveChanges();
             }
-            /*
-            var eventName = nameEventTextbox.Text;
-            var eventDate = dateEventPicker.SelectedDate;
 
-            JpegBitmapEncoder encoderJpeg = new JpegBitmapEncoder();
-
-            var eventImage = ImageSourceToBytes(encoderJpeg, imagePreview.Source);
-            db.OpenConnection();
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            var currentDate = DateTime.Now;
-            DataTable table = new DataTable();
-
-            string request = $"INSERT INTO Events (Name_Event, Date_Event, Picture_Event) VALUES ({eventName},{eventDate},{eventImage}) Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
-
-            SqlCommand comm = new SqlCommand(request, db.GetConnection());
-
-            adapter.SelectCommand = comm;
-
-            adapter.Fill(table);
-
-            SqlDataReader reader = comm.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (table.Rows.Count > 0)
-                {
-                    //newsLabel.Content = reader["Name_Event"].ToString();
-                }
-            }
-
-            db.CloseConnection();*/
+            MessageBox.Show("Событие добавлено в базу данных", "Успешно", MessageBoxButton.OK);
         }
 
         public static byte[] ImageSourceToBytes(BitmapEncoder encoder, ImageSource imageSource)

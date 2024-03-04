@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TV_APP.WPFFORMS"
         mc:Ignorable="d"
-        Title="Setting" Height="450" Width="512"
+        Title="Setting" Height="410" Width="512"
         Background="AliceBlue">
     <Grid Margin="10,0,0,0" >
         <Grid.RowDefinitions>
@@ -17,10 +17,8 @@
         </ListBox>
         <Button Content="Добавить видео" HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Click="Button_Click" />
         <Button Content="Удалить видео" Click="Button_Click_1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Margin="0,114,0,0"/>
-        <Button Content="Сохранить плейлист в базу данных" HorizontalAlignment="Center" Margin="0,206,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_2"/>
-        <Button Content="Загрузить плейлист из базы данных" HorizontalAlignment="Center" Margin="0,235,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_3"/>
-        <Label x:Name="testLabel_2" Content="Label" HorizontalAlignment="Left" Margin="35,178,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="testLabel" Content="Label" HorizontalAlignment="Left" Margin="35,152,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Сохранить плейлист в базу данных" HorizontalAlignment="Center" Margin="0,192,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_2"/>
+        <Button Content="Загрузить плейлист из базы данных" HorizontalAlignment="Center" Margin="0,221,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_3"/>
 
 
 

@@ -14,7 +14,7 @@
                     <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
                 </ContextMenu>
             </StackPanel.ContextMenu>
-            <Image Height="739" Width="920"/>
+            <Image x:Name="newsImage" Height="739" Width="920" Source="/Resources/Placeholder.png"/>
             <Label x:Name="newsLabel" Content="Событие" Height="158" Width="920" FontSize="48"/>
             <Label x:Name="dateLabel" Content="Дата" Height="116" Width="920" FontSize="36"/>
         </StackPanel>

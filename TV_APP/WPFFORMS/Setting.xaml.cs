@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TV_APP_Context.DBContext;
 using TV_APP_Context.Models;
+using System.Xml.Linq;
 
 namespace TV_APP.WPFFORMS
 {
@@ -85,17 +86,13 @@ namespace TV_APP.WPFFORMS
             {
                 var count = VideoList.Items.Count;
 
-                for (int i = 0; i <= count; i++)
+                for (int i = 0; i < count; i++)
                 {
-                    VideoList.SelectedIndex = i+1;
+                    VideoList.SelectedIndex = i;
 
                     byte[] mediaPath = File.ReadAllBytes(VideoList.SelectedItem.ToString());
 
                     //byte[] mediaPath = StreamFile(VideoList.SelectedItem.ToString());
-
-                    testLabel.Content = VideoList.SelectedItem.ToString();
-
-                    testLabel_2.Content = mediaPath;
 
                     using (var db = new TV_dbContext())
                     {
@@ -104,20 +101,44 @@ namespace TV_APP.WPFFORMS
                             IdVideo = i,
                             SourceVideo = mediaPath,
                         };
+
+                        db.Videos.Add(newVideo);
+                        db.SaveChanges();
                     }
-
-                    MessageBox.Show("Плейлист загружен в базу данных", "АЕЕЕ", MessageBoxButton.OK);
-
                 }
-
-
-
+                MessageBox.Show("Плейлист загружен в базу данных", "Успешно", MessageBoxButton.OK);
             }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            using (var db = new TV_dbContext())
+            {
+                if (!db.Videos.Any())
+                {
+                    MessageBox.Show("В базе данных отсутствуют видеоролики", "Ошибка", MessageBoxButton.OK);
+                    return;
+                }
+                else
+                {
+                var count = db.Videos.Count();
 
+                    for (int i = 0; i < count; i++)
+                    {
+                        VideoList.SelectedIndex = i;
+
+                        //byte[] mediaPath = File.ReadAllBytes(VideoList.SelectedItem.ToString());
+
+                        var byteVideo = db.Videos.FirstOrDefault(x => x.IdVideo == i);
+
+                        var addVideo = ByteArrToUri(byteVideo.SourceVideo);
+
+                        VideoList.Items.Add(addVideo);
+
+                    }
+                }
+                MessageBox.Show("Плейлист из базы данных загружен", "Успешно", MessageBoxButton.OK);
+            }
         }
 
         private byte[] StreamFile(string filename)
@@ -130,6 +151,11 @@ namespace TV_APP.WPFFORMS
 
             fs.Close();
             return ImageData; 
+        }
+
+        Uri ByteArrToUri(byte[] arr)
+        {
+            return new Uri(Encoding.UTF8.GetString(arr));
         }
     }
 }

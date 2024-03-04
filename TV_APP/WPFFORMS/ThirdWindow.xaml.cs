@@ -22,7 +22,8 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class ThirdWindow : Window
     {
-        //DBConnection db = new DBConnection();
+        static readonly ImageSourceConverter imageSourceConverter
+            = new ImageSourceConverter();
         public ThirdWindow()
         {
             InitializeComponent();
@@ -32,7 +33,6 @@ namespace TV_APP.WPFFORMS
         {
             using (var db = new TV_dbContext())
             {
-                //db.Configuration.ProxyCreationEnabled = false;
 
                 var currentDate = DateTime.Now.ToString("yyyyMMdd");
                 var found = db.Events.Any(x => x.DateEvent == currentDate);
@@ -41,6 +41,12 @@ namespace TV_APP.WPFFORMS
                 {
                     var eventName = db.Events.FirstOrDefault(x => x.DateEvent == currentDate);
                     newsLabel.Content = eventName.NameEvent;
+
+                    if (eventName.PictureEvent != null)
+                    {
+                        newsImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(eventName.PictureEvent);
+                    }
+
                 }
             }
 
@@ -56,7 +62,7 @@ namespace TV_APP.WPFFORMS
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }
