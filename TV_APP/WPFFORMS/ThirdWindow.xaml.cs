@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TV_APP_Context.DBContext;
 
 namespace TV_APP.WPFFORMS
 {
@@ -29,53 +30,28 @@ namespace TV_APP.WPFFORMS
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
-            /*using (var db = new TVContext())
+            using (var db = new TV_dbContext())
             {
-                db.Configuration.ProxyCreationEnabled = false;
+                //db.Configuration.ProxyCreationEnabled = false;
 
                 var currentDate = DateTime.Now.ToString("yyyyMMdd");
-                var found = db.Events.Any(x => x.Date_Event == currentDate);
+                var found = db.Events.Any(x => x.DateEvent == currentDate);
+
                 if (found)
                 {
-
-                    var eventName = db.Events.Where(x => x.Date_Event == currentDate);
-
-                    newsLabel.Content = eventName.Select(x => x.Name_Event);
-                }
-                
-            }
-            /*
-            db.OpenConnection();
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            var currentDate = DateTime.Now;
-            DataTable table = new DataTable();
-
-            string request = $"SELECT Name_Event FROM Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
-            
-            SqlCommand comm = new SqlCommand(request, db.GetConnection());
-
-            adapter.SelectCommand = comm;
-
-            adapter.Fill(table);
-
-            SqlDataReader reader = comm.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (table.Rows.Count > 0)
-                {
-                    newsLabel.Content = reader["Name_Event"].ToString();
+                    var eventName = db.Events.FirstOrDefault(x => x.DateEvent == currentDate);
+                    newsLabel.Content = eventName.NameEvent;
                 }
             }
 
-            db.CloseConnection();*/
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            var openSet = new SecondWindow();
 
+            var settings = new Settings(openSet.Mypleer);
+            settings.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

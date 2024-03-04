@@ -24,10 +24,13 @@
         </Grid>
         <Image Source="/Resources/unnamed.png" HorizontalAlignment="Center" Margin="0,47,0,63" Width="1444"/>
         <Label x:Name="currentDateLabel" HorizontalAlignment="Center"  Content="Понедельник" FontFamily="Arial Black" FontSize="128" Foreground="#FF172F3E" Grid.Row="1" Margin="0,31,0,155" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <svgc:SvgViewbox x:Name="weatherImage" Margin="626,49,1014,61" Grid.Row="2"/>
+        <svgc:SvgViewbox x:Name="weatherImage" Margin="626,49,1014,61" Grid.Row="2">
+         </svgc:SvgViewbox>
 
         <Label x:Name="currentTimeLabel" Content="12:22:22" HorizontalAlignment="Left" Margin="644,177,0,27" FontFamily="Arial Black" Width="620" FontSize="128" Foreground="#FF172F3E" Grid.Row="1"/>
         <Label x:Name="tempCurrentLabel" Content="12 C" HorizontalAlignment="Left" Margin="963,105,0,104" FontFamily="Arial Black" FontSize="108" Foreground="#FF172F3E" Grid.Row="2" Width="307"/>
-        <Label x:Name="newsLabel" Content="12 C" HorizontalAlignment="Left" Margin="766,209,0,0" FontFamily="Arial Black" FontSize="108" Foreground="#FF172F3E" Grid.Row="2" Width="307"/>
+      
+        <TextBlock x:Name="newsTexblock" Margin="88,219,193,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

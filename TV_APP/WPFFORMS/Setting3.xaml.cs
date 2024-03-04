@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing;
+using TV_APP_Context.DBContext;
+using TV_APP_Context.Models;
 
 namespace TV_APP.WPFFORMS
 {
@@ -50,6 +52,23 @@ namespace TV_APP.WPFFORMS
 
         private void imageButton2_Click(object sender, RoutedEventArgs e)
         {
+            var newDate = dateEventPicker.SelectedDate;
+
+            JpegBitmapEncoder encoderJpeg = new JpegBitmapEncoder();
+
+            var eventImage = ImageSourceToBytes(encoderJpeg, imagePreview.Source);
+
+            using (var db = new TV_dbContext())
+            {
+                Event newEvent = new Event
+                {
+                    NameEvent = nameEventTextbox.Text,
+                    DateEvent = $"{newDate:yyyyMMdd}",
+                    PictureEvent = eventImage,
+            };
+                db.Events.Add(newEvent);
+                db.SaveChanges();
+            }
             /*
             var eventName = nameEventTextbox.Text;
             var eventDate = dateEventPicker.SelectedDate;

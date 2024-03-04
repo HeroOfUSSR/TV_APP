@@ -17,15 +17,16 @@ namespace TV_APP_Context.DBContext
         {
         }
 
-        public virtual DbSet<Event> Events { get; set; } = null!;
-        public virtual DbSet<Video> Videos { get; set; } = null!;
+        public  DbSet<Event> Events { get; set; } 
+        public  DbSet<Video> Videos { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-DDO84UQ; Initial Catalog=TV_db; Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=ORIT-14\\SQLEXPRESS; Initial Catalog=TV_db; User id=Student ORIT ; Password=DabiduN");
+                    //"Data Source=DESKTOP-DDO84UQ; Initial Catalog=TV_db; Integrated Security=True");
             }
         }
 

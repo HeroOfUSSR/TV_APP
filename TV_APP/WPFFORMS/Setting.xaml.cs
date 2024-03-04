@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TV_APP_Context.DBContext;
+using TV_APP_Context.Models;
 
 namespace TV_APP.WPFFORMS
 {
@@ -29,6 +31,7 @@ namespace TV_APP.WPFFORMS
         {
             InitializeComponent();
             this.mediaElement = mediaElement;
+
         }
 
 
@@ -74,15 +77,13 @@ namespace TV_APP.WPFFORMS
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            /*if (VideoList.Items.Count == 0)
-            
+            if (VideoList.Items.Count == 0)
+            { 
                 return;
             }
             else
             {
                 var count = VideoList.Items.Count;
-
-                db.OpenConnection();
 
                 for (int i = 0; i <= count; i++)
                 {
@@ -96,22 +97,22 @@ namespace TV_APP.WPFFORMS
 
                     testLabel_2.Content = mediaPath;
 
-                    string request = $"INSERT INTO Videos (ID_Video, Source_Video) VALUES ({i+1}, {mediaPath})";
+                    using (var db = new TV_dbContext())
+                    {
+                        Video newVideo = new Video
+                        {
+                            IdVideo = i,
+                            SourceVideo = mediaPath,
+                        };
+                    }
 
-                    SqlCommand comm = new SqlCommand(request, db.GetConnection());
-
-                    SqlParameter param = comm.Parameters.Add("@Content", System.Data.SqlDbType.VarBinary);
-
-                    param.Value = mediaPath;
-
-                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Плейлист загружен в базу данных", "АЕЕЕ", MessageBoxButton.OK);
 
                 }
 
-                MessageBox.Show("Плейлист загружен в базу данных", "АЕЕЕ", MessageBoxButton.OK);
 
-                db.CloseConnection();
-            }*/
+
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
