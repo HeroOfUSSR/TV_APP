@@ -30,12 +30,14 @@ namespace TV_APP.WPFFORMS
             //this.forFrame=new List<Page>();
             forFrame.Add(new Setting3());
 
+            forFrame.Add(new Setting1());
+
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            OptionFrame.Content = forFrame[2];
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

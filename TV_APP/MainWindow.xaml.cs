@@ -61,13 +61,13 @@ namespace TV_APP
 
             tempCurrentLabel.Content = $"{oW.main.temp}°C";
 
-            string filePath = $"C:/Users/student_orit/source/repos/TV_APP/TV_APP/Icons/{oW.weather[0].icon}.svg";
-                //{oW.weather[0].icon}.svg";
+            //string filePath = $"C:/Users/student_orit/source/repos/TV_APP/TV_APP/Icons/{oW.weather[0].icon}.svg";
+            //    //{oW.weather[0].icon}.svg";
 
-            using (StreamReader stream = new StreamReader(filePath))
-            {
-                weatherImage.StreamSource = stream.BaseStream;
-            }
+            //using (StreamReader stream = new StreamReader(filePath))
+            //{
+            //    weatherImage.StreamSource = stream.BaseStream;
+            //}
 
         }
 
