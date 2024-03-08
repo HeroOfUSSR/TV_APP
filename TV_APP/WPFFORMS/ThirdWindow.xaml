@@ -15,13 +15,14 @@
                 </ContextMenu>
             </StackPanel.ContextMenu>
             <Image x:Name="newsImage" Height="739" Width="920" Source="/Resources/Placeholder.png"/>
-            <Label x:Name="newsLabel" Content="Событие" Height="158" Width="920" FontSize="48"/>
-            <Label x:Name="dateLabel" Content="Дата" Height="116" Width="920" FontSize="36"/>
+            <TextBlock x:Name="newsLabel" Text="Событие" Height="158" Width="920" FontSize="48"/>
+            <TextBlock x:Name="dateLabel" Text="Дата" Height="116" Width="920" FontSize="36"/>
         </StackPanel>
 
         <StackPanel Margin="965,26,10,25">
-            <Label x:Name="factLabel" Content="Интересный факт" Height="263" Width="920" FontSize="48"/>
-            <Image Height="739" Width="936"/>
+            <TextBlock x:Name="factLabel" Text="Интересный факт/новость" Height="138" Width="920" FontSize="48" TextWrapping="Wrap"/>
+            <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="237" Width="920" FontSize="36" TextWrapping="Wrap"/>
+            <Image Height="624" Width="952"/>
         </StackPanel>
     </Grid>
 </Window>

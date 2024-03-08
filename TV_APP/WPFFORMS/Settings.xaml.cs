@@ -28,6 +28,7 @@ namespace TV_APP.WPFFORMS
 
             forFrame.Add(new Setting(mediaElement));
             forFrame.Add(new Setting3());
+            forFrame.Add(new Setting4());
 
 
         }
@@ -45,6 +46,11 @@ namespace TV_APP.WPFFORMS
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             OptionFrame.Content = forFrame[1];
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            OptionFrame.Content = forFrame[2];
         }
     }
 }

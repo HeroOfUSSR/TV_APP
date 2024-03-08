@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,23 +34,30 @@ namespace TV_APP.WPFFORMS
         {
             using (var db = new TV_dbContext())
             {
-
                 var currentDate = DateTime.Now.ToString("yyyyMMdd");
+                var cultureInfo = new CultureInfo("ru-RU");
                 var found = db.Events.Any(x => x.DateEvent == currentDate);
+                Random random = new Random();
 
                 if (found)
                 {
                     var eventName = db.Events.FirstOrDefault(x => x.DateEvent == currentDate);
-                    newsLabel.Content = eventName.NameEvent;
+                    newsLabel.Text = eventName.NameEvent;
+                    dateLabel.Text = DateTime.ParseExact(eventName.DateEvent, "yyyyMMdd", null).ToString("dd MMMM");
 
                     if (eventName.PictureEvent != null)
                     {
                         newsImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(eventName.PictureEvent);
                     }
-
                 }
-            }
 
+                var factRandom = random.Next(1, db.Facts.Count());
+
+                var factForDisplay = db.Facts.FirstOrDefault(x => x.IdFact == factRandom);
+
+                factLabel.Text = factForDisplay.TitleFact;
+                descLabel.Text = factForDisplay.DescFact;
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

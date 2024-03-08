@@ -19,6 +19,7 @@ namespace TV_APP_Context.DBContext
 
         public  DbSet<Event> Events { get; set; } 
         public  DbSet<Video> Videos { get; set; } 
+        public  DbSet<Fact> Facts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -59,6 +60,20 @@ namespace TV_APP_Context.DBContext
                     .HasColumnName("ID_Video");
 
                 entity.Property(e => e.SourceVideo).HasColumnName("Source_Video");
+            });
+
+            modelBuilder.Entity<Fact>(entity =>
+            {
+                entity.HasKey(entity => entity.IdFact);
+
+                entity.Property(entity => entity.IdFact)
+                    .HasColumnName("ID_Fact");
+
+                entity.Property(entity => entity.DescFact).HasColumnName("Desc_Fact");
+
+                entity.Property(entity => entity.TitleFact).HasColumnName("Title_Fact");
+
+                entity.Property(entity => entity.PictureFact).HasColumnName("Picture_Fact");
             });
 
             OnModelCreatingPartial(modelBuilder);

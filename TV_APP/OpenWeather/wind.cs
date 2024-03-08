@@ -8,7 +8,7 @@ namespace TV_APP.OpenWeather
 {
     class wind
     {
-        public int speed;
+        public double speed;
 
         public int deg;
     }

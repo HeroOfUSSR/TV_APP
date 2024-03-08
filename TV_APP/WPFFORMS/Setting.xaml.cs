@@ -90,7 +90,9 @@ namespace TV_APP.WPFFORMS
                 {
                     VideoList.SelectedIndex = i;
 
-                    byte[] mediaPath = File.ReadAllBytes(VideoList.SelectedItem.ToString());
+                    //byte[] mediaPath = File.ReadAllBytes(new Uri(VideoList.SelectedItem.ToString()));
+
+                    string mediaPath = VideoList.SelectedItem.ToString();
 
                     //byte[] mediaPath = StreamFile(VideoList.SelectedItem.ToString());
 
@@ -131,7 +133,9 @@ namespace TV_APP.WPFFORMS
 
                         var byteVideo = db.Videos.FirstOrDefault(x => x.IdVideo == i);
 
-                        var addVideo = ByteArrToUri(byteVideo.SourceVideo);
+                        //var addVideo = ByteArrToUri(byteVideo.SourceVideo);
+
+                        var addVideo = byteVideo.SourceVideo;
 
                         VideoList.Items.Add(addVideo);
 
