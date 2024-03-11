@@ -20,6 +20,12 @@
         </StackPanel>
 
         <StackPanel Margin="965,26,10,25">
+            <StackPanel.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Настройки" Click="MenuItem_Click"/>
+                    <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                </ContextMenu>
+            </StackPanel.ContextMenu>
             <TextBlock x:Name="factLabel" Text="Интересный факт/новость" Height="138" Width="920" FontSize="48" TextWrapping="Wrap"/>
             <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="237" Width="920" FontSize="36" TextWrapping="Wrap"/>
             <Image Height="624" Width="952"/>

@@ -49,6 +49,10 @@ namespace TV_APP.WPFFORMS
             }
 
             MessageBox.Show("Запись добавлена в базу данных", "Успешно", MessageBoxButton.OK);
+
+            nameTextbox.Clear();
+            descTextbox.Clear();
+            imagePreview.Source = null;
         }
 
         private void imageButton_Click(object sender, RoutedEventArgs e)
