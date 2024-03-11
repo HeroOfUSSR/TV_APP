@@ -23,12 +23,12 @@ namespace TV_APP.WPFFORMS
     /// <summary>
     /// Логика взаимодействия для Setting.xaml
     /// </summary>
-    public partial class Setting : Page
+    public partial class Setting2 : Page
     {
         //DBConnection db = new DBConnection();
         public MediaElement mediaElement { get; set;}
 
-        public Setting(MediaElement mediaElement)
+        public Setting2(MediaElement mediaElement)
         {
             InitializeComponent();
             this.mediaElement = mediaElement;

@@ -25,32 +25,32 @@ namespace TV_APP.WPFFORMS
         {
             InitializeComponent();
 
-
-            forFrame.Add(new Setting(mediaElement));
+            forFrame.Add(new Setting1());
+            forFrame.Add(new Setting2(mediaElement));
             forFrame.Add(new Setting3());
             forFrame.Add(new Setting4());
-            forFrame.Add(new Setting1());
+            
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OptionFrame.Content = forFrame[2];
+            OptionFrame.Content = forFrame[0];
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            OptionFrame.Content = forFrame[0];
+            OptionFrame.Content = forFrame[1];
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            OptionFrame.Content = forFrame[1];
+            OptionFrame.Content = forFrame[2];
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            OptionFrame.Content = forFrame[2];
+            OptionFrame.Content = forFrame[3];
         }
     }
 }

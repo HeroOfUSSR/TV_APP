@@ -58,10 +58,10 @@ namespace TV_APP
             string filePath = $"Icons/{oW.weather[0].icon}.svg";
             //{oW.weather[0].icon}.svg";
 
-            //using (StreamReader stream = new StreamReader(filePath))
-            //{
-            //    weatherImage.StreamSource = stream.BaseStream;
-            //}
+            using (StreamReader stream = new StreamReader(filePath))
+            {
+                weatherImage.StreamSource = stream.BaseStream;
+            }
 
         }
 
