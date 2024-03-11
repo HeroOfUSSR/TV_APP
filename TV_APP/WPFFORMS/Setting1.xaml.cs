@@ -22,7 +22,7 @@ namespace TV_APP.WPFFORMS
     public partial class Setting1 : Page
     {
         public DispatcherTimer Timer { get; set; }
-        public List<TextBox> textBoxes { get; set; }    
+        public List<TextBox> textBoxes { get; set; }
 
         private int index = 0;
 
@@ -32,6 +32,10 @@ namespace TV_APP.WPFFORMS
             InitializeComponent();
 
 
+            texb1.Text = Properties.Settings.Default.t1;
+            texb2.Text = Properties.Settings.Default.t2;
+            texb3.Text = Properties.Settings.Default.t3;
+
             Timer = new DispatcherTimer();
             Timer.Tick += Timer_Tick;
             Timer.Interval = TimeSpan.FromSeconds(1);
@@ -40,7 +44,7 @@ namespace TV_APP.WPFFORMS
 
             foreach (var item in LogicalTreeHelper.GetChildren(grid))
             {
-                if(item is TextBox textBox)
+                if (item is TextBox textBox)
                 {
                     textBoxes.Add(textBox);
                 }
@@ -50,9 +54,9 @@ namespace TV_APP.WPFFORMS
 
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
-            if (int.TryParse(textBoxes[index].Text,out var sec))
+            if (int.TryParse(textBoxes[index].Text, out var sec))
             {
                 sec--;
                 textBoxes[index].Text = sec.ToString();
@@ -60,21 +64,36 @@ namespace TV_APP.WPFFORMS
                 if (sec <= 0)
                 {
                     index++;
-                    
+
                 }
                 if (index >= textBoxes.Count)
                 {
                     Timer.Stop();
-                }
-                
-            }
-           
 
+                    index = 0;
+
+                    texb1.Text = Properties.Settings.Default.t1;
+                    texb2.Text = Properties.Settings.Default.t2;
+                    texb3.Text = Properties.Settings.Default.t3;
+
+
+                    Timer.Start();
+                }
+               
+            }
+  
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Timer.Start();
+
+            Properties.Settings.Default.t1 = texb1.Text;
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.t2 = texb2.Text;
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.t3 = texb3.Text;
+            Properties.Settings.Default.Save();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
