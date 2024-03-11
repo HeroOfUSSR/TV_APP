@@ -12,6 +12,7 @@ namespace TV_APP.WPFFORMS
        // private Setting setting;
         private Settings settings1;
         private Setting setting; 
+
         public SecondWindow()
         {
 
@@ -20,6 +21,7 @@ namespace TV_APP.WPFFORMS
             InitializeComponent();
             setting = new Setting(Mypleer);
 
+            var Player = Mypleer;
             Settings settings = new Settings(Mypleer);
             settings.Show();
 

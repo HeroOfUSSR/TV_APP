@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing;
+using TV_APP_Context.DBContext;
+using TV_APP_Context.Models;
 
 namespace TV_APP.WPFFORMS
 {
@@ -24,7 +26,7 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting3 : Page
     {
-        DBConnection db = new DBConnection();
+        //DBConnection db = new DBConnection();
 
         static readonly ImageSourceConverter imageSourceConverter
             = new ImageSourceConverter();
@@ -37,66 +39,55 @@ namespace TV_APP.WPFFORMS
         public void imageButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Media files (*.BMP; *.JPEG; *.PNG; *.TIFF)|*.BMP; *.JPEG; *.PNG; *.TIFF";
+            openFileDialog.Filter = "Media files (*.BMP; *.JPEG; *.PNG; *.TIFF; *.JPG)|*.BMP; *.JPEG; *.PNG; *.TIFF; *.JPG";
             if (openFileDialog.ShowDialog() == false)
             {
                 return;
             }
 
             imagePreview.Source = (ImageSource)imageSourceConverter.ConvertFrom(new Uri(openFileDialog.FileName));
-
-           //BitmapImage bitmapImage = openFileDialog;
         }
 
         private void imageButton2_Click(object sender, RoutedEventArgs e)
         {
-            var eventName = nameEventTextbox.Text;
-            var eventDate = dateEventPicker.SelectedDate;
+            var newDate = dateEventPicker.SelectedDate;
 
+            JpegBitmapEncoder encoderJpeg = new JpegBitmapEncoder();
 
-            //var eventImage = BufferFromImage(imagePreview.Source);
-            db.OpenConnection();
+            var eventImage = ImageSourceToBytes(encoderJpeg, imagePreview.Source);
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            var currentDate = DateTime.Now;
-            DataTable table = new DataTable();
-
-            string request = $"INSERT INTO Events (Name_Event, Date_Event, Picture_Event) VALUES () Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
-
-            SqlCommand comm = new SqlCommand(request, db.GetConnection());
-
-            adapter.SelectCommand = comm;
-
-            adapter.Fill(table);
-
-            SqlDataReader reader = comm.ExecuteReader();
-
-            while (reader.Read())
+            using (var db = new TV_dbContext())
             {
-                if (table.Rows.Count > 0)
+                Event newEvent = new Event
                 {
-                    //newsLabel.Content = reader["Name_Event"].ToString();
-                }
+                    NameEvent = nameEventTextbox.Text,
+                    DateEvent = $"{newDate:yyyyMMdd}",
+                    PictureEvent = eventImage,
+            };
+                db.Events.Add(newEvent);
+                db.SaveChanges();
             }
 
-            db.CloseConnection();
+            MessageBox.Show("Событие добавлено в базу данных", "Успешно", MessageBoxButton.OK);
         }
 
-        public byte[] BufferFromImage(BitmapImage imageSource)
+        public static byte[] ImageSourceToBytes(BitmapEncoder encoder, ImageSource imageSource)
         {
-            Stream stream = imageSource.StreamSource;
-            byte[] buffer = null;
+            byte[] bytes = null;
+            var bitmapSource = imageSource as BitmapSource;
 
-            if (stream != null && stream.Length > 0)
+            if (bitmapSource != null)
             {
-                using (BinaryReader br = new BinaryReader(stream))
+                encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+
+                using (var stream = new MemoryStream())
                 {
-                    buffer = br.ReadBytes((Int32)stream.Length);
+                    encoder.Save(stream);
+                    bytes = stream.ToArray();
                 }
             }
 
-            return buffer;
+            return bytes;
         }
     }
 }

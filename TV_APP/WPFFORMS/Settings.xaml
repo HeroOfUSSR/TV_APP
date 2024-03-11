@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TV_APP.WPFFORMS"
         mc:Ignorable="d"
-        Title="Settings" Height="480" Width="510">
+        Title="Settings" Height="480" Width="515">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -14,9 +14,10 @@
 
         <Frame x:Name="OptionFrame" Grid.Row="1" Background="LightGoldenrodYellow"/>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Слайд #1" Width="170" Height="30" Click="Button_Click"/>
-            <Button Content="Слайд #2" Width="170" Height="30" Click="Button_Click_1"/>
-            <Button Content="Слайд #3" Width="170" Height="30" Click="Button_Click_2"/>
+            <Button Content="Слайд #1" Width="128" Height="30" Click="Button_Click"/>
+            <Button Content="Слайд #2" Width="128" Height="30" Click="Button_Click_1"/>
+            <Button Content="Слайд #3" Width="128" Height="30" Click="Button_Click_2"/>
+            <Button Content="Слайд #4" Width="128" Height="30" Click="Button_Click_3"/>
         </StackPanel>
     </Grid>
 </Window>

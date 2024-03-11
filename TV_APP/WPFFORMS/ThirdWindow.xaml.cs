@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TV_APP_Context.DBContext;
 
 namespace TV_APP.WPFFORMS
 {
@@ -21,7 +23,8 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class ThirdWindow : Window
     {
-        DBConnection db = new DBConnection();
+        static readonly ImageSourceConverter imageSourceConverter
+            = new ImageSourceConverter();
         public ThirdWindow()
         {
             InitializeComponent();
@@ -29,43 +32,45 @@ namespace TV_APP.WPFFORMS
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
-
-            db.OpenConnection();
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            var currentDate = DateTime.Now;
-            DataTable table = new DataTable();
-
-            string request = $"SELECT Name_Event FROM Events WHERE Date_Event={currentDate.ToString("yyyyMMdd")}";
-            
-            SqlCommand comm = new SqlCommand(request, db.GetConnection());
-
-            adapter.SelectCommand = comm;
-
-            adapter.Fill(table);
-
-            SqlDataReader reader = comm.ExecuteReader();
-
-            while (reader.Read())
+            using (var db = new TV_dbContext())
             {
-                if (table.Rows.Count > 0)
-                {
-                    newsLabel.Content = reader["Name_Event"].ToString();
-                }
-            }
+                var currentDate = DateTime.Now.ToString("yyyyMMdd");
+                var cultureInfo = new CultureInfo("ru-RU");
+                var found = db.Events.Any(x => x.DateEvent == currentDate);
+                Random random = new Random();
 
-            db.CloseConnection();
+                if (found)
+                {
+                    var eventName = db.Events.FirstOrDefault(x => x.DateEvent == currentDate);
+                    newsLabel.Text = eventName.NameEvent;
+                    dateLabel.Text = DateTime.ParseExact(eventName.DateEvent, "yyyyMMdd", null).ToString("dd MMMM");
+
+                    if (eventName.PictureEvent != null)
+                    {
+                        newsImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(eventName.PictureEvent);
+                    }
+                }
+
+                var factRandom = random.Next(1, db.Facts.Count());
+
+                var factForDisplay = db.Facts.FirstOrDefault(x => x.IdFact == factRandom);
+
+                factLabel.Text = factForDisplay.TitleFact;
+                descLabel.Text = factForDisplay.DescFact;
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            var openSet = new SecondWindow();
 
+            var settings = new Settings(openSet.Mypleer);
+            settings.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }

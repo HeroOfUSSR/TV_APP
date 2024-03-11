@@ -1,18 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using TV_APP.WPFFORMS;
+using TV_APP_Context.DBContext;
 
 namespace TV_APP
 {
@@ -29,6 +22,7 @@ namespace TV_APP
                 currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
                 currentDateLabel.Content = DateTime.Now.ToString("dddd");
             }, Dispatcher);
+ 
         }
 
         private async void Grid_Initialized(object sender, EventArgs e)
@@ -47,9 +41,9 @@ namespace TV_APP
 
             string answer = string.Empty;
 
-            using(Stream s = response.GetResponseStream())
+            using (Stream s = response.GetResponseStream())
             {
-                using (StreamReader reader = new StreamReader(s)) 
+                using (StreamReader reader = new StreamReader(s))
                 {
                     answer = await reader.ReadToEndAsync();
                 }
@@ -59,10 +53,10 @@ namespace TV_APP
 
             OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            tempCurrentLabel.Content = $"{oW.main.temp}°C";
+            tempCurrentLabel.Content = $"{Math.Round(oW.main.temp)}°C";
 
-            //string filePath = $"C:/Users/student_orit/source/repos/TV_APP/TV_APP/Icons/{oW.weather[0].icon}.svg";
-            //    //{oW.weather[0].icon}.svg";
+            string filePath = $"Icons/{oW.weather[0].icon}.svg";
+            //{oW.weather[0].icon}.svg";
 
             //using (StreamReader stream = new StreamReader(filePath))
             //{

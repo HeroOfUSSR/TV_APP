@@ -21,14 +21,14 @@ namespace TV_APP.WPFFORMS
     {
         List<Page> forFrame = new List<Page>();
 
-        public Settings(MediaElement player)
+        public Settings(MediaElement mediaElement)
         {
             InitializeComponent();
 
 
-            forFrame.Add(new Setting(player));
-            //this.forFrame=new List<Page>();
+            forFrame.Add(new Setting(mediaElement));
             forFrame.Add(new Setting3());
+            forFrame.Add(new Setting4());
             forFrame.Add(new Setting1());
 
         }
@@ -46,6 +46,11 @@ namespace TV_APP.WPFFORMS
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             OptionFrame.Content = forFrame[1];
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            OptionFrame.Content = forFrame[2];
         }
     }
 }
