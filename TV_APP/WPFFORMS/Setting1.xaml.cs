@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+using TV_APP.OpenWeather;
 
 namespace TV_APP.WPFFORMS
 {
@@ -23,14 +12,25 @@ namespace TV_APP.WPFFORMS
     {
         public DispatcherTimer Timer { get; set; }
         public List<TextBox> textBoxes { get; set; }
+        public List<Window> windows { get; set; }   
 
+       
         private int index = 0;
 
-
+        
         public Setting1()
         {
             InitializeComponent();
 
+            var test1 = new Test1();
+            var test2 = new Test2();
+            var test3 = new Test3();
+
+            windows= new List<Window>();
+
+            windows.Add(test1);
+            windows.Add(test2);
+            windows.Add(test3);
 
             texb1.Text = Properties.Settings.Default.t1;
             texb2.Text = Properties.Settings.Default.t2;
@@ -38,6 +38,8 @@ namespace TV_APP.WPFFORMS
 
             Timer = new DispatcherTimer();
             Timer.Tick += Timer_Tick;
+   
+
             Timer.Interval = TimeSpan.FromSeconds(1);
 
             textBoxes = new List<TextBox>();
@@ -54,6 +56,10 @@ namespace TV_APP.WPFFORMS
 
         }
 
+       
+
+      
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
             if (int.TryParse(textBoxes[index].Text, out var sec))
@@ -61,28 +67,46 @@ namespace TV_APP.WPFFORMS
                 sec--;
                 textBoxes[index].Text = sec.ToString();
 
+               
+
                 if (sec <= 0)
                 {
+                    windows[index].Hide();
+
                     index++;
 
+                   
+
+                    if (index >= textBoxes.Count)
+                    {
+                        Timer.Stop();
+
+                        index = 0;
+
+                        texb1.Text = Properties.Settings.Default.t1;
+                        texb2.Text = Properties.Settings.Default.t2;
+                        texb3.Text = Properties.Settings.Default.t3;
+
+
+                        Timer.Start();
+                    }
+
+                    windows[index].Show();
                 }
-                if (index >= textBoxes.Count)
-                {
-                    Timer.Stop();
 
-                    index = 0;
-
-                    texb1.Text = Properties.Settings.Default.t1;
-                    texb2.Text = Properties.Settings.Default.t2;
-                    texb3.Text = Properties.Settings.Default.t3;
-
-
-                    Timer.Start();
-                }
+                   
                
+
+               
+
+
             }
-  
+
         }
+
+
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -94,11 +118,25 @@ namespace TV_APP.WPFFORMS
             Properties.Settings.Default.Save();
             Properties.Settings.Default.t3 = texb3.Text;
             Properties.Settings.Default.Save();
+
+            if (index == 0)
+            {
+                windows[index].Show();
+            }
+
+
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Timer.Stop();
+        }
+
+        private void texb1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
+
         }
     }
 }

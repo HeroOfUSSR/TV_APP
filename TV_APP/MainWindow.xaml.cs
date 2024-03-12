@@ -16,13 +16,17 @@ namespace TV_APP
     {
         private DispatcherTimer _timer;
         public MainWindow()
+
+
         {
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
-                currentDateLabel.Content = DateTime.Now.ToString("dddd");
-            }, Dispatcher);
- 
+
+            InitializeComponent();
+
+            //_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            //{
+            //    currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
+            //    currentDateLabel.Content = DateTime.Now.ToString("dddd");
+            //}, Dispatcher);
         }
 
         private async void Grid_Initialized(object sender, EventArgs e)
@@ -51,9 +55,9 @@ namespace TV_APP
 
             response.Close();
 
-            OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
+            //OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            tempCurrentLabel.Content = $"{Math.Round(oW.main.temp)}°C";
+            //tempCurrentLabel.Content = $"{oW.main.temp}°C";
 
             string filePath = $"Icons/{oW.weather[0].icon}.svg";
             //{oW.weather[0].icon}.svg";
@@ -78,6 +82,8 @@ namespace TV_APP
         {
             var newForm = new SecondWindow();
             newForm.Show();
+
+            
         }
 
         

@@ -16,14 +16,10 @@
         <Label Content="Окно с фактами" HorizontalAlignment="Left" Margin="88,115,0,0" VerticalAlignment="Top"/>
         <Label Content="Окно с видосами" HorizontalAlignment="Left" Margin="88,84,0,0" VerticalAlignment="Top"/>
         <Button Content="Запись времени" HorizontalAlignment="Left" Margin="88,170,0,0" VerticalAlignment="Top" Height="52" Width="104" Click="Button_Click"/>
-        <Button Content="Остановка времени" HorizontalAlignment="Left" Margin="232,168,0,0" VerticalAlignment="Top" Height="56" Width="114" Click="Button_Click_1" RenderTransformOrigin="0.449,1.32"/>
-
-        <TextBox x:Name="texb1" HorizontalAlignment="Left" Margin="226,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="texb2" HorizontalAlignment="Left" Margin="226,88,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="texb3" HorizontalAlignment="Left" Margin="226,119,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-
-
-
-
+        <Button Content="Остановка времени" HorizontalAlignment="Left" Margin="243,168,0,0" VerticalAlignment="Top" Height="57" Width="114" Click="Button_Click_1" RenderTransformOrigin="0.449,1.32"/>
+        <Label Content="главное окно" HorizontalAlignment="Left" Margin="88,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="texb1" HorizontalAlignment="Left" Margin="219,45,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="texb1_TextChanged"/>
+        <TextBox x:Name="texb2" HorizontalAlignment="Left" Margin="219,88,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="texb3"   HorizontalAlignment="Left" Margin="219,123,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Page>
