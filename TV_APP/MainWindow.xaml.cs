@@ -14,19 +14,18 @@ namespace TV_APP
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DispatcherTimer _timer;
+        public DispatcherTimer _timer;
         public MainWindow()
 
 
         {
-
             InitializeComponent();
 
-            //_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            //{
-            //    currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
-            //    currentDateLabel.Content = DateTime.Now.ToString("dddd");
-            //}, Dispatcher);
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                currentTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
+                currentDateLabel.Content = DateTime.Now.ToString("dddd");
+            }, Dispatcher);
         }
 
         private async void Grid_Initialized(object sender, EventArgs e)

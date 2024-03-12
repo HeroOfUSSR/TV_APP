@@ -37,7 +37,21 @@ namespace TV_APP.WPFFORMS
                 var currentDate = DateTime.Now.ToString("yyyyMMdd");
                 var cultureInfo = new CultureInfo("ru-RU");
                 var found = db.Events.Any(x => x.DateEvent == currentDate);
+
                 Random random = new Random();
+
+                var factRandom = random.Next(1, db.Facts.Max(x => x.IdFact));
+
+                var factForDisplay = db.Facts.First(x => x.IdFact > factRandom);
+
+
+                factLabel.Text = factForDisplay.TitleFact;
+                descLabel.Text = factForDisplay.DescFact;
+
+                if (factForDisplay.PictureFact != null)
+                {
+                    factImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(factForDisplay.PictureFact);
+                }
 
                 if (found)
                 {
@@ -50,13 +64,23 @@ namespace TV_APP.WPFFORMS
                         newsImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(eventName.PictureEvent);
                     }
                 }
+                else
+                {
+                    factRandom = random.Next(1, db.Facts.Max(x => x.IdFact));
 
-                var factRandom = random.Next(1, db.Facts.Count());
+                    factForDisplay = db.Facts.First(x => x.IdFact > factRandom);
 
-                var factForDisplay = db.Facts.FirstOrDefault(x => x.IdFact == factRandom);
 
-                factLabel.Text = factForDisplay.TitleFact;
-                descLabel.Text = factForDisplay.DescFact;
+                    newsLabel.Text = factForDisplay.TitleFact;
+                    dateLabel.Text = factForDisplay.DescFact;
+
+                    if (factForDisplay.PictureFact != null)
+                    {
+                        newsImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(factForDisplay.PictureFact);
+                    }
+                }
+
+                
             }
         }
 
