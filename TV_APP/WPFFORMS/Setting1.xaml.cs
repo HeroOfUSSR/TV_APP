@@ -79,9 +79,36 @@ namespace TV_APP.WPFFORMS
 
                     Timer.Start();
                 }
-               
+
+                switch (index)
+                {
+                    case 0:
+
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.ShowDialog();
+
+
+                        break;
+
+
+                    case 1:
+                        SecondWindow secondWindow = new SecondWindow();
+                        secondWindow.ShowDialog();
+                        break;
+
+
+                    case 2:
+
+                        ThirdWindow thirdWindow = new ThirdWindow();
+                        thirdWindow.ShowDialog();
+                        break;
+
+
+
+                }
             }
-  
+            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

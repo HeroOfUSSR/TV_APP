@@ -5,30 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TV_APP.WPFFORMS"
         mc:Ignorable="d"
-        Title="ThirdWindow" Height="1080" Width="1920">
+        WindowState="Maximized"
+        WindowStyle="None"
+        Height="1080" Width="1920">
     <Grid Initialized="Grid_Initialized">
-        <StackPanel Margin="10,26,970,25">
-            <StackPanel.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Настройки" Click="MenuItem_Click"/>
-                    <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
-                </ContextMenu>
-            </StackPanel.ContextMenu>
-            <Image x:Name="newsImage" Height="739" Width="920" Source="/Resources/Placeholder.png"/>
-            <TextBlock x:Name="newsLabel" Text="Событие" Height="158" Width="920" FontSize="48"/>
-            <TextBlock x:Name="dateLabel" Text="Дата" Height="116" Width="920" FontSize="36"/>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="965,26,10,25">
-            <StackPanel.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Настройки" Click="MenuItem_Click"/>
-                    <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
-                </ContextMenu>
-            </StackPanel.ContextMenu>
-            <TextBlock x:Name="factLabel" Text="Интересный факт/новость" Height="138" Width="920" FontSize="48" TextWrapping="Wrap"/>
-            <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="237" Width="920" FontSize="36" TextWrapping="Wrap"/>
-            <Image Height="624" Width="952"/>
-        </StackPanel>
+
+        <Border Width="930" Height="1030">
+
+            <Border.Background >
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#FFE3EEF5" Offset="0.0"/>
+                    <GradientStop Color="#FF65A1C7" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+                <RectangleGeometry RadiusX="50" 
+                                       RadiusY="50" 
+                                       Rect="0,0,930,1030"/>
+            </Border.Clip>
+            <Grid >
+                
+                <StackPanel Grid.Column="0">
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Настройки" Click="MenuItem_Click"/>
+                            <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                    
+                    <Border Width="920" Height="560" Margin="8,10,8,5">
+                        <Border.Background >
+                            <SolidColorBrush Color="White"/>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="50" 
+                           RadiusY="50" 
+                           Rect="0,0,915,560"/>
+                        </Border.Clip>
+                        <Image x:Name="newsImage" Height="560" Width="920" Source="/Resources/Placeholder.png"/>
+                    </Border>
+
+                    <TextBlock x:Name="newsLabel" Height="194" Width="885" FontSize="48" Margin="5,10,5,5" TextWrapping="Wrap"><Run Text="Событие"/><LineBreak/><Run Language="ru-ru" Text="-Вторая строка"/><LineBreak/><Run Text="-"/><Run Language="ru-ru" Text="Третья строка"/></TextBlock>
+                    <TextBlock x:Name="dateLabel" Text="Дата" Height="207" Width="885" FontSize="36" Margin="5,10,5,5" TextWrapping="Wrap"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <Border Width="930" Height="1030" Grid.Column="1">
+
+            <Border.Background >
+                <LinearGradientBrush StartPoint="1,2" EndPoint="0,0">
+                    <GradientStop Color="#FFE3EEF5" Offset="1"/>
+                    <GradientStop Color="#FF65A1C7" Offset="0.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+                <RectangleGeometry RadiusX="50" 
+                       RadiusY="50" 
+                       Rect="0,0,930,1030"/>
+            </Border.Clip>
+
+            <Grid>
+                <StackPanel >
+
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Настройки" Click="MenuItem_Click"/>
+                            <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                    <Border Width="920" Height="560" Margin="8,10,8,5" >
+                        <Border.Background >
+                            <SolidColorBrush Color="White"/>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="50" 
+                            RadiusY="50" 
+                            Rect="0,0,915,560"/>
+                        </Border.Clip>
+                        <Image x:Name="factImage" Height="560" Width="920" Source="/Resources/Placeholder.png"/>
+                    </Border>
+                    <TextBlock x:Name="factLabel" Height="198" Width="885" FontSize="48" TextWrapping="Wrap" Margin="5,10,5,5"><Run Text="Интересный факт/новость"/><LineBreak/><Run Text="-Вторая строка"/><LineBreak/><Run Text="-"/><Run Text="Третья строка"/></TextBlock>
+                    <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="200" Width="885" FontSize="36" TextWrapping="Wrap" Margin="5,10,5,5"/>
+                    
+                </StackPanel>
+            </Grid>
+        </Border>
+
+
+
+
     </Grid>
 </Window>
