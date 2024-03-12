@@ -12,25 +12,19 @@ namespace TV_APP.WPFFORMS
     {
         public DispatcherTimer Timer { get; set; }
         public List<TextBox> textBoxes { get; set; }
-        public List<Window> windows { get; set; }   
+        
+        
+        public bool changeWindow = false;
 
        
-        private int index = 0;
+        public int index = 0;
 
         
         public Setting1()
         {
             InitializeComponent();
 
-            var test1 = new Test1();
-            var test2 = new Test2();
-            var test3 = new Test3();
-
-            windows= new List<Window>();
-
-            windows.Add(test1);
-            windows.Add(test2);
-            windows.Add(test3);
+           
 
             texb1.Text = Properties.Settings.Default.t1;
             texb2.Text = Properties.Settings.Default.t2;
@@ -60,7 +54,7 @@ namespace TV_APP.WPFFORMS
 
       
 
-        private void Timer_Tick(object? sender, EventArgs e)
+        public void Timer_Tick(object? sender, EventArgs e)
         {
             if (int.TryParse(textBoxes[index].Text, out var sec))
             {
@@ -71,11 +65,9 @@ namespace TV_APP.WPFFORMS
 
                 if (sec <= 0)
                 {
-                    windows[index].Hide();
-
+                    //windows[index].Hide();
+                    changeWindow = !changeWindow;
                     index++;
-
-                   
 
                     if (index >= textBoxes.Count)
                     {
@@ -91,21 +83,11 @@ namespace TV_APP.WPFFORMS
                         Timer.Start();
                     }
 
-                    windows[index].Show();
+                    //windows[index].Show();
+                    
                 }
-
-                   
-               
-
-               
-
-
             }
-
         }
-
-
-
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -119,10 +101,10 @@ namespace TV_APP.WPFFORMS
             Properties.Settings.Default.t3 = texb3.Text;
             Properties.Settings.Default.Save();
 
-            if (index == 0)
+            /*if (index == 0)
             {
                 windows[index].Show();
-            }
+            }*/
 
 
 

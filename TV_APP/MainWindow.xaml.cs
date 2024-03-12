@@ -12,12 +12,10 @@ namespace TV_APP
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Page
     {
         public DispatcherTimer _timer;
         public MainWindow()
-
-
         {
             InitializeComponent();
 
@@ -30,14 +28,14 @@ namespace TV_APP
 
         private async void Grid_Initialized(object sender, EventArgs e)
         {
-            var API_key = "ff1bad88f9167a7ca73c31ccdc382666";
+            /*var API_key = "ff1bad88f9167a7ca73c31ccdc382666";
             var lon = "30.2642";
             var lat = "59.8944";
 
             WebRequest request = WebRequest.Create($"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}&units=metric");
 
             request.Method = "POST";
-
+            
             request.ContentType = "application/x-www-urlencoded";
 
             WebResponse response = await request.GetResponseAsync();
@@ -54,9 +52,9 @@ namespace TV_APP
 
             response.Close();
 
-            //OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
+            OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            //tempCurrentLabel.Content = $"{oW.main.temp}°C";
+            tempCurrentLabel.Content = $"{Math.Round(oW.main.temp)}°C";
 
             string filePath = $"Icons/{oW.weather[0].icon}.svg";
             //{oW.weather[0].icon}.svg";
@@ -65,7 +63,7 @@ namespace TV_APP
             {
                 weatherImage.StreamSource = stream.BaseStream;
             }
-
+            */
         }
 
         private void richText_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,12 +77,20 @@ namespace TV_APP
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var newForm = new SecondWindow();
-            newForm.Show();
 
-            
         }
 
-        
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var openSet = new SecondWindow();
+
+            var settings = new Settings(openSet.Mypleer);
+            settings.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
