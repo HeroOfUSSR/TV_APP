@@ -42,7 +42,7 @@ namespace TV_APP.WPFFORMS
 
                 var factRandom = random.Next(1, db.Facts.Max(x => x.IdFact));
 
-                var factForDisplay = db.Facts.First(x => x.IdFact > factRandom);
+                var factForDisplay = db.Facts.First(x => x.IdFact >= factRandom);
 
 
                 factLabel.Text = factForDisplay.TitleFact;
@@ -68,7 +68,7 @@ namespace TV_APP.WPFFORMS
                 {
                     factRandom = random.Next(1, db.Facts.Max(x => x.IdFact));
 
-                    factForDisplay = db.Facts.First(x => x.IdFact > factRandom);
+                    factForDisplay = db.Facts.First(x => x.IdFact >= factRandom);
 
 
                     newsLabel.Text = factForDisplay.TitleFact;

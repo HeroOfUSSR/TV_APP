@@ -22,9 +22,9 @@ namespace TV_APP.WPFFORMS
         {
             InitializeComponent();
 
-            var test1 = new Test1();
-            var test2 = new Test2();
-            var test3 = new Test3();
+            var test1 = new MainWindow();
+            var test2 = new SecondWindow();
+            var test3 = new ThirdWindow();
 
             windows= new List<Window>();
 

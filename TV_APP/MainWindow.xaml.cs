@@ -54,12 +54,12 @@ namespace TV_APP
 
             response.Close();
 
-            //OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
+            OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            //tempCurrentLabel.Content = $"{oW.main.temp}°C";
+            tempCurrentLabel.Content = $"{Math.Round(oW.main.temp)}°C";
 
             string filePath = $"Icons/{oW.weather[0].icon}.svg";
-            //{oW.weather[0].icon}.svg";
+      
 
             using (StreamReader stream = new StreamReader(filePath))
             {
@@ -75,12 +75,15 @@ namespace TV_APP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {  
+             var openSet = new SecondWindow();
+
+            var settings = new Settings(openSet.Mypleer);
+            settings.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var newForm = new SecondWindow();
-            newForm.Show();
+          
 
             
         }

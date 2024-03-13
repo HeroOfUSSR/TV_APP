@@ -9,15 +9,15 @@
         WindowStyle="None"
         Height="1080" Width="1920">
 
-    <Grid>
-
+    <Grid Background="Transparent">
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Настройки" Click="MenuItem_Click"/>
+                <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
         <MediaElement Margin="-2,0,4,4"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4" MediaEnded="Mypleer_MediaEnded">
-            <MediaElement.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Настройки" Click="MenuItem_Click"/>
-                    <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
-                </ContextMenu>
-            </MediaElement.ContextMenu>
+            
 
         </MediaElement>
         <Button x:Name="nextButton" Content="Button" HorizontalAlignment="Left" Margin="1756,1027,0,0" VerticalAlignment="Top" Height="31" Width="124" Click="nextButton_Click"/>

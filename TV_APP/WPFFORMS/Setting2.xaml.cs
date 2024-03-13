@@ -43,8 +43,6 @@ namespace TV_APP.WPFFORMS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Media files (*.avi;*.mp4;*.wmv)|*.avi;*.mp4;*.wmv";
            if (openFileDialog.ShowDialog() == false)
@@ -132,8 +130,6 @@ namespace TV_APP.WPFFORMS
                         //byte[] mediaPath = File.ReadAllBytes(VideoList.SelectedItem.ToString());
 
                         var byteVideo = db.Videos.FirstOrDefault(x => x.IdVideo == i);
-
-                        //var addVideo = ByteArrToUri(byteVideo.SourceVideo);
 
                         var addVideo = byteVideo.SourceVideo;
 
