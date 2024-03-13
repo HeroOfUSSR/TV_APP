@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -28,7 +29,7 @@ namespace TV_APP
 
         private async void Grid_Initialized(object sender, EventArgs e)
         {
-            /*var API_key = "ff1bad88f9167a7ca73c31ccdc382666";
+            var API_key = "ff1bad88f9167a7ca73c31ccdc382666";
             var lon = "30.2642";
             var lat = "59.8944";
 
@@ -63,7 +64,7 @@ namespace TV_APP
             {
                 weatherImage.StreamSource = stream.BaseStream;
             }
-            */
+           
         }
 
         private void richText_TextChanged(object sender, TextChangedEventArgs e)
@@ -91,6 +92,20 @@ namespace TV_APP
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            var gigaNext = new GigaWindow();
+
+            gigaNext.GigaFrame.Content = new SecondWindow();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            var gigaNext = new GigaWindow();
+
+            gigaNext.GigaFrame.Content = new ThirdWindow();
         }
     }
 }

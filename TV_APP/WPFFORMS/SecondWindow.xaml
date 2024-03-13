@@ -12,6 +12,8 @@
             <ContextMenu>
                 <MenuItem Header="Настройки" Click="MenuItem_Click"/>
                 <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Следующее окно" Click="MenuItem_Click_2"/>
+                <MenuItem Header="Предыдущее окно" Click="MenuItem_Click_3"/>
             </ContextMenu>
         </Grid.ContextMenu>
         <MediaElement Margin="-2,0,4,4"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4" MediaEnded="Mypleer_MediaEnded">

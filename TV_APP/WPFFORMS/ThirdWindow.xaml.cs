@@ -78,9 +78,7 @@ namespace TV_APP.WPFFORMS
                     {
                         newsImage.Source = (ImageSource)imageSourceConverter.ConvertFrom(factForDisplay.PictureFact);
                     }
-                }
-
-                
+                } 
             }
         }
 
@@ -95,6 +93,20 @@ namespace TV_APP.WPFFORMS
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            var gigaNext = new GigaWindow();
+
+            gigaNext.GigaFrame.Content = new MainWindow();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            var gigaNext = new GigaWindow();
+
+            gigaNext.GigaFrame.Content = new SecondWindow();
         }
     }
 }

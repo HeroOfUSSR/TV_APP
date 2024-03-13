@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,31 +21,30 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class GigaWindow : Window
     {
-        public List<Page> windows { get; set; }
+        List<Page> gigaList = new List<Page>();
+
+        public Setting1 options = new Setting1();
+
         public GigaWindow()
         {
             InitializeComponent();
 
-            var test1 = new MainWindow();
-            var test2 = new SecondWindow();
-            var test3 = new ThirdWindow();
-
-            windows = new List<Page>();
-
-            windows.Add(test1);
-            windows.Add(test2);
-            windows.Add(test3);
-
-            GigaFrame.Content = windows[0];
-
-            var chepuha = new Setting1();
-
-            if (chepuha.changeWindow == true)
-            {
-                GigaFrame.Content = windows[chepuha.index];
-            }
-
+            options.PageChanged += OnPageChanged;
             
+        }
+
+        public void OnPageChanged(object source, EventArgs e)
+        {
+            GigaFrame.Content = gigaList[options.index];
+            options.changeWindow = !options.changeWindow;
+        }
+
+        private void Grid_Initialized(object sender, EventArgs e)
+        {
+            gigaList.Add(new MainWindow());
+            gigaList.Add(new SecondWindow());
+            gigaList.Add(new ThirdWindow());
+            GigaFrame.Content = gigaList[2];
         }
     }
 }

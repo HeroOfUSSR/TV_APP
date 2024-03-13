@@ -11,6 +11,8 @@
             <ContextMenu>
                 <MenuItem Header="Настройки" Click="MenuItem_Click"/>
                 <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Следующее окно" Click="MenuItem_Click_2"/>
+                <MenuItem Header="Предыдущее окно" Click="MenuItem_Click_3"/>
             </ContextMenu>
         </Grid.ContextMenu>
         <Grid.ColumnDefinitions>
@@ -94,13 +96,9 @@
                     </Border>
                     <TextBlock x:Name="factLabel" Height="198" Width="885" FontSize="48" TextWrapping="Wrap" Margin="5,10,5,5"><Run Text="Интересный факт/новость"/><LineBreak/><Run Text="-Вторая строка"/><LineBreak/><Run Text="-"/><Run Text="Третья строка"/></TextBlock>
                     <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="200" Width="885" FontSize="36" TextWrapping="Wrap" Margin="5,10,5,5"/>
-                    
+
                 </StackPanel>
             </Grid>
         </Border>
-
-
-
-
     </Grid>
 </Page>

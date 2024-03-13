@@ -12,9 +12,12 @@ namespace TV_APP.WPFFORMS
     {
         public DispatcherTimer Timer { get; set; }
         public List<TextBox> textBoxes { get; set; }
-        
-        
+
         public bool changeWindow = false;
+
+        public delegate void PageChangedEventHandler(object source, EventArgs args);
+
+        public event PageChangedEventHandler PageChanged;
 
        
         public int index = 0;
@@ -47,12 +50,16 @@ namespace TV_APP.WPFFORMS
 
             }
 
-
         }
 
-       
+        protected virtual void OnPageChanged()
+        {
+            if (changeWindow == true)
+            {
+                PageChanged(this, EventArgs.Empty);
+            }
+        }
 
-      
 
         public void Timer_Tick(object? sender, EventArgs e)
         {
@@ -66,7 +73,9 @@ namespace TV_APP.WPFFORMS
                 if (sec <= 0)
                 {
                     //windows[index].Hide();
-                    changeWindow = !changeWindow;
+
+                    changeWindow = true;
+                    OnPageChanged();
                     index++;
 
                     if (index >= textBoxes.Count)
