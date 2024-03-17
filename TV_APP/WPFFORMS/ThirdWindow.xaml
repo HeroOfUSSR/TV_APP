@@ -7,19 +7,11 @@
         mc:Ignorable="d"
         Height="1080" Width="1920">
     <Grid Initialized="Grid_Initialized" Background="White">
-        <Grid.ContextMenu>
-            <ContextMenu>
-                <MenuItem Header="Настройки" Click="MenuItem_Click"/>
-                <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
-                <MenuItem Header="Следующее окно" Click="MenuItem_Click_2"/>
-                <MenuItem Header="Предыдущее окно" Click="MenuItem_Click_3"/>
-            </ContextMenu>
-        </Grid.ContextMenu>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
 
         <Border Width="930" Height="1030">
 
@@ -77,12 +69,7 @@
             <Grid>
                 <StackPanel >
 
-                    <StackPanel.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Настройки" Click="MenuItem_Click"/>
-                            <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
-                        </ContextMenu>
-                    </StackPanel.ContextMenu>
+
                     <Border Width="920" Height="560" Margin="8,10,8,5" >
                         <Border.Background >
                             <SolidColorBrush Color="White"/>

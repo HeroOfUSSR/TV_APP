@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:TV_APP"
         mc:Ignorable="d"
         Height="1080" Width="1920">
-    <Grid>
- 
+    <Grid Background="White">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
 

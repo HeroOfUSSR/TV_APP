@@ -40,39 +40,21 @@ namespace TV_APP.WPFFORMS
         private void Mypleer_MediaEnded(object sender, RoutedEventArgs e)
         {
             var count = setting.VideoList.Items.Count;
-            index= setting.VideoList.SelectedIndex;
-            if (index+1>=count)
+            index = setting.VideoList.SelectedIndex;
+
+            if (index<count)
             {
-                index = -1;
+                setting.VideoList.SelectedIndex = index + 1;
             }
-            setting.VideoList.SelectedIndex = index+1;
-            setting.mediaElement.Play();
+
+            //setting.mediaElement.Play();
+            setting.PlayVideo();
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            var gigaNext = new GigaWindow();
-
-            gigaNext.GigaFrame.Content = new MainWindow();
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            var gigaNext = new GigaWindow();
-
-            gigaNext.GigaFrame.Content = new ThirdWindow();
-        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            using (var db = new TV_dbContext())
-            {
-
-            }
+ 
             index = setting.VideoList.SelectedIndex;
             setting.mediaElement.Play();
         }

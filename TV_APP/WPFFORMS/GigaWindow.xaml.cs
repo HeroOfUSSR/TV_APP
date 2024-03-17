@@ -108,15 +108,15 @@ namespace TV_APP.WPFFORMS
 
         private void OptionsClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void CloseClick(object sender, RoutedEventArgs e)
-        {
             var openSet = new SecondWindow();
 
             var settings = new Settings(openSet.Mypleer);
             settings.Show();
+        }
+
+        private void CloseClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void NextClick(object sender, RoutedEventArgs e)

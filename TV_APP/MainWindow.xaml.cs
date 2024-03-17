@@ -67,32 +67,6 @@ namespace TV_APP
            
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var openSet = new SecondWindow();
-
-            var settings = new Settings(openSet.Mypleer);
-            settings.Show();
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            var gigaNext = new GigaWindow();
-
-            gigaNext.GigaFrame.Content = new SecondWindow();
-        }
-
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            var gigaNext = new GigaWindow();
-
-            gigaNext.GigaFrame.Content = new ThirdWindow();
-        }
 
     }
 }

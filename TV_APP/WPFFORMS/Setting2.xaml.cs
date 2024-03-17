@@ -31,6 +31,7 @@ namespace TV_APP.WPFFORMS
         {
             InitializeComponent();
             this.mediaElement = mediaElement;
+            LoadVideosDB();
 
         }
 
@@ -50,7 +51,6 @@ namespace TV_APP.WPFFORMS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Media files (*.avi;*.mp4;*.wmv)|*.avi;*.mp4;*.wmv";
@@ -87,23 +87,34 @@ namespace TV_APP.WPFFORMS
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (VideoList.Items.Count == 0)
-            { 
+            {
+                MessageBox.Show("Выберите видеоролики для сохранения");
                 return;
             }
             else
             {
-                var count = VideoList.Items.Count;
-
-                for (int i = 0; i < count; i++)
+                using (var db = new TV_dbContext())
                 {
-                    VideoList.SelectedIndex = i;
+                    var last = db.Videos.OrderBy(x => x.IdVideo).Last();
 
-                    //byte[] mediaPath = File.ReadAllBytes(new Uri(VideoList.SelectedItem.ToString()));
-
-                    string mediaPath = VideoList.SelectedItem.ToString();
-
-                    using (var db = new TV_dbContext())
+                    for (int j = 0; j <= last.IdVideo; j++)
                     {
+                        var refreshVideos = db.Videos.FirstOrDefault(x => x.IdVideo == j);
+
+                        db.Videos.Remove(refreshVideos);
+                    }
+
+                    var count = VideoList.Items.Count;
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        VideoList.SelectedIndex = i;
+
+                        //byte[] mediaPath = File.ReadAllBytes(new Uri(VideoList.SelectedItem.ToString()));
+
+                        string mediaPath = VideoList.SelectedItem.ToString();
+
+                        
                         Video newVideo = new Video
                         {
                             IdVideo = i,
@@ -113,23 +124,24 @@ namespace TV_APP.WPFFORMS
                         db.Videos.Add(newVideo);
                         db.SaveChanges();
                     }
+
                 }
                 MessageBox.Show("Плейлист загружен в базу данных", "Успешно", MessageBoxButton.OK);
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void LoadVideosDB()
         {
             using (var db = new TV_dbContext())
             {
                 if (!db.Videos.Any())
                 {
-                    MessageBox.Show("В базе данных отсутствуют видеоролики", "Ошибка", MessageBoxButton.OK);
+                    //MessageBox.Show("В базе данных отсутствуют видеоролики", "Ошибка", MessageBoxButton.OK);
                     return;
                 }
                 else
                 {
-                var count = db.Videos.Count();
+                    var count = db.Videos.Count();
 
                     for (int i = 0; i < count; i++)
                     {
@@ -139,16 +151,19 @@ namespace TV_APP.WPFFORMS
 
                         var byteVideo = db.Videos.FirstOrDefault(x => x.IdVideo == i);
 
-                        //var addVideo = ByteArrToUri(byteVideo.SourceVideo);
-
                         var addVideo = byteVideo.SourceVideo;
 
                         VideoList.Items.Add(addVideo);
 
                     }
                 }
-                MessageBox.Show("Плейлист из базы данных загружен", "Успешно", MessageBoxButton.OK);
+                //MessageBox.Show("Плейлист из базы данных загружен", "Успешно", MessageBoxButton.OK);
             }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            
         }
 
     }
