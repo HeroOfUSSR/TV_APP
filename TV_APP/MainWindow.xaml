@@ -7,15 +7,8 @@
         xmlns:local="clr-namespace:TV_APP"
         mc:Ignorable="d"
         Height="1080" Width="1920">
-    <Grid Background="White">
-        <Grid.ContextMenu>
-            <ContextMenu>
-                <MenuItem Header="Настройки" Click="MenuItem_Click"/>
-                <MenuItem Header="Закрыть программу" Click="MenuItem_Click_1"/>
-                <MenuItem Header="Следующее окно" Click="MenuItem_Click_2"/>
-                <MenuItem Header="Предыдущее окно" Click="MenuItem_Click_3"/>
-            </ContextMenu>
-        </Grid.ContextMenu>
+    <Grid>
+ 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
 

@@ -10,124 +10,30 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting1 : Page
     {
-        public DispatcherTimer Timer { get; set; }
-        public List<TextBox> textBoxes { get; set; }
-
-        public bool changeWindow = false;
-
-        public delegate void PageChangedEventHandler(object source, EventArgs args);
-
-        public event PageChangedEventHandler PageChanged;
-
-       
-        public int index = 0;
-
-        
+        public static string inputButton;
         public Setting1()
         {
             InitializeComponent();
 
-           
-
-            texb1.Text = Properties.Settings.Default.t1;
-            texb2.Text = Properties.Settings.Default.t2;
-            texb3.Text = Properties.Settings.Default.t3;
-
-            Timer = new DispatcherTimer();
-            Timer.Tick += Timer_Tick;
-   
-
-            Timer.Interval = TimeSpan.FromSeconds(1);
-
-            textBoxes = new List<TextBox>();
-
-            foreach (var item in LogicalTreeHelper.GetChildren(grid))
-            {
-                if (item is TextBox textBox)
-                {
-                    textBoxes.Add(textBox);
-                }
-
-            }
-
-        }
-
-        protected virtual void OnPageChanged()
-        {
-            if (changeWindow == true)
-            {
-                PageChanged(this, EventArgs.Empty);
-            }
-        }
-
-
-        public void Timer_Tick(object? sender, EventArgs e)
-        {
-            if (int.TryParse(textBoxes[index].Text, out var sec))
-            {
-                sec--;
-                textBoxes[index].Text = sec.ToString();
-
-               
-
-                if (sec <= 0)
-                {
-                    //windows[index].Hide();
-
-                    changeWindow = true;
-                    OnPageChanged();
-                    index++;
-
-                    if (index >= textBoxes.Count)
-                    {
-                        Timer.Stop();
-
-                        index = 0;
-
-                        texb1.Text = Properties.Settings.Default.t1;
-                        texb2.Text = Properties.Settings.Default.t2;
-                        texb3.Text = Properties.Settings.Default.t3;
-
-
-                        Timer.Start();
-                    }
-
-                    //windows[index].Show();
-                    
-                }
-            }
+            slide1.Text = Properties.Settings.Default.t1;
+            slide2.Text = Properties.Settings.Default.t2;
+            slide3.Text = Properties.Settings.Default.t3;
+            GigaWindow.timerValue1 = Convert.ToInt32(slide1.Text);
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Timer.Start();
+            Properties.Settings.Default.t1 = slide1.Text;
+            Properties.Settings.Default.t2 = slide2.Text;
+            Properties.Settings.Default.t3 = slide3.Text;
 
-            Properties.Settings.Default.t1 = texb1.Text;
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.t2 = texb2.Text;
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.t3 = texb3.Text;
-            Properties.Settings.Default.Save();
+            GigaWindow.timerValue1 = Convert.ToInt32(slide1.Text);
+            GigaWindow.timerValue2 = Convert.ToInt32(slide2.Text);
+            GigaWindow.timerValue3 = Convert.ToInt32(slide3.Text);
 
-            /*if (index == 0)
-            {
-                windows[index].Show();
-            }*/
-
-
-
+            inputButton = hotkey.Text;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Timer.Stop();
-        }
-
-        private void texb1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-           
-
-        }
     }
 }

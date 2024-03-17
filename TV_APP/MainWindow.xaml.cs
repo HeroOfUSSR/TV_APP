@@ -67,20 +67,6 @@ namespace TV_APP
            
         }
 
-        private void richText_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {  
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             var openSet = new SecondWindow();
@@ -107,5 +93,6 @@ namespace TV_APP
 
             gigaNext.GigaFrame.Content = new ThirdWindow();
         }
+
     }
 }

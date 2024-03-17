@@ -10,15 +10,14 @@
 
     <Grid x:Name="grid">
 
-
-
-        <Label Content="Главное окно" HorizontalAlignment="Left" Margin="88,53,0,0" VerticalAlignment="Top"/>
-        <Label Content="Окно с фактами" HorizontalAlignment="Left" Margin="88,115,0,0" VerticalAlignment="Top"/>
-        <Label Content="Окно с видосами" HorizontalAlignment="Left" Margin="88,84,0,0" VerticalAlignment="Top"/>
-        <Button Content="Запись времени" HorizontalAlignment="Left" Margin="88,170,0,0" VerticalAlignment="Top" Height="52" Width="104" Click="Button_Click"/>
-        <Button Content="Остановка времени" HorizontalAlignment="Left" Margin="243,168,0,0" VerticalAlignment="Top" Height="57" Width="114" Click="Button_Click_1" RenderTransformOrigin="0.449,1.32"/>
-        <TextBox x:Name="texb1" HorizontalAlignment="Left" Margin="219,57,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="texb1_TextChanged"/>
-        <TextBox x:Name="texb2" HorizontalAlignment="Left" Margin="219,88,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="texb3"   HorizontalAlignment="Left" Margin="219,123,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Окно 1" HorizontalAlignment="Left" Margin="172,65,0,0" VerticalAlignment="Top" FontFamily="Dubai Medium" FontSize="16"/>
+        <Button Content="Сохранить изменения" HorizontalAlignment="Center" Margin="0,233,0,0" VerticalAlignment="Top" Height="33" Width="322" Click="Button_Click" FontFamily="Dubai Medium" FontSize="14"/>
+        <TextBox x:Name="slide1" HorizontalAlignment="Left" Margin="256,71,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="79" FontFamily="Dubai Medium" FontSize="14"/>
+        <Label Content="Горячая клавиша" HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Center" FontFamily="Dubai Medium" FontSize="16"/>
+        <TextBox x:Name="hotkey" HorizontalAlignment="Left" Margin="305,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="79" FontFamily="Dubai Medium" FontSize="14"/>
+        <Label Content="Окно 2" HorizontalAlignment="Left" Margin="172,96,0,0" VerticalAlignment="Top" FontFamily="Dubai Medium" FontSize="16"/>
+        <TextBox x:Name="slide2" HorizontalAlignment="Left" Margin="256,102,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="79" FontFamily="Dubai Medium" FontSize="14"/>
+        <Label Content="Окно 3" HorizontalAlignment="Left" Margin="172,127,0,0" VerticalAlignment="Top" FontFamily="Dubai Medium" FontSize="16"/>
+        <TextBox x:Name="slide3" HorizontalAlignment="Left" Margin="256,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="79" FontFamily="Dubai Medium" FontSize="14"/>
     </Grid>
 </Page>

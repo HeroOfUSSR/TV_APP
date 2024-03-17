@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using TV_APP_Context.DBContext;
 
 
 namespace TV_APP.WPFFORMS
@@ -10,15 +11,15 @@ namespace TV_APP.WPFFORMS
     public partial class SecondWindow : Page
     {
        // private Setting setting;
-        private Setting2 setting; 
-
+        private Setting2 setting;
+        private int index;
         public SecondWindow()
         {
             InitializeComponent();
             setting = new Setting2(Mypleer);
 
-            Settings settings = new Settings(Mypleer);
-            settings.Show();
+            /*Settings settings = new Settings(Mypleer);
+            settings.Show();*/
 
         }
 
@@ -39,7 +40,7 @@ namespace TV_APP.WPFFORMS
         private void Mypleer_MediaEnded(object sender, RoutedEventArgs e)
         {
             var count = setting.VideoList.Items.Count;
-            var index= setting.VideoList.SelectedIndex;
+            index= setting.VideoList.SelectedIndex;
             if (index+1>=count)
             {
                 index = -1;
@@ -64,6 +65,16 @@ namespace TV_APP.WPFFORMS
             var gigaNext = new GigaWindow();
 
             gigaNext.GigaFrame.Content = new ThirdWindow();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (var db = new TV_dbContext())
+            {
+
+            }
+            index = setting.VideoList.SelectedIndex;
+            setting.mediaElement.Play();
         }
     }
 }

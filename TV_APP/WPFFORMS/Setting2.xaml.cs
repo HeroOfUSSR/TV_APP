@@ -25,7 +25,6 @@ namespace TV_APP.WPFFORMS
     /// </summary>
     public partial class Setting2 : Page
     {
-        //DBConnection db = new DBConnection();
         public MediaElement mediaElement { get; set;}
 
         public Setting2(MediaElement mediaElement)
@@ -38,7 +37,15 @@ namespace TV_APP.WPFFORMS
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            VideoList.Items.RemoveAt(VideoList.SelectedIndex);
+            try
+            {
+                VideoList.Items.RemoveAt(VideoList.SelectedIndex);
+            }
+            catch
+            {
+                MessageBox.Show("Выберите ролик для удаления");
+            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,12 +66,13 @@ namespace TV_APP.WPFFORMS
 
 
         }
-
-    
-
         private void VideoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+            PlayVideo();
+        }
+
+        public void PlayVideo()
+        {
             mediaElement.Stop();
             if (VideoList.SelectedItem == null)
             {
@@ -93,8 +101,6 @@ namespace TV_APP.WPFFORMS
                     //byte[] mediaPath = File.ReadAllBytes(new Uri(VideoList.SelectedItem.ToString()));
 
                     string mediaPath = VideoList.SelectedItem.ToString();
-
-                    //byte[] mediaPath = StreamFile(VideoList.SelectedItem.ToString());
 
                     using (var db = new TV_dbContext())
                     {
@@ -145,21 +151,5 @@ namespace TV_APP.WPFFORMS
             }
         }
 
-        private byte[] StreamFile(string filename)
-        {
-            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-
-            byte[] ImageData = new byte[fs.Length];
-
-            fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
-
-            fs.Close();
-            return ImageData; 
-        }
-
-        Uri ByteArrToUri(byte[] arr)
-        {
-            return new Uri(Encoding.UTF8.GetString(arr));
-        }
     }
 }

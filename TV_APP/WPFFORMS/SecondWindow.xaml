@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TV_APP.WPFFORMS"
         mc:Ignorable="d"
-        Height="1080" Width="1920">
+        Height="1080" Width="1920" Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.ContextMenu>
             <ContextMenu>
                 <MenuItem Header="Настройки" Click="MenuItem_Click"/>
@@ -16,9 +16,7 @@
                 <MenuItem Header="Предыдущее окно" Click="MenuItem_Click_3"/>
             </ContextMenu>
         </Grid.ContextMenu>
-        <MediaElement Margin="-2,0,4,4"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4" MediaEnded="Mypleer_MediaEnded">
+        <MediaElement Margin="0,0,0,0"  x:Name="Mypleer" LoadedBehavior="Manual" Source="/WPFFORMS/180607_A_101.mp4" MediaEnded="Mypleer_MediaEnded">
         </MediaElement>
-        <Button x:Name="nextButton" Content="Button" HorizontalAlignment="Left" Margin="1756,1027,0,0" VerticalAlignment="Top" Height="31" Width="124" Click="nextButton_Click"/>
-
     </Grid>
 </Page>

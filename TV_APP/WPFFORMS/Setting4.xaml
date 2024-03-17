@@ -10,9 +10,9 @@
 
     <Grid>
         <TextBox x:Name="nameTextbox" HorizontalAlignment="Center" Margin="0,23,0,0" TextWrapping="Wrap" Text="Введите название мероприятия" VerticalAlignment="Top" Width="370" Height="24"/>
-        <Button x:Name="imageButton" Content="Выбрать изображение" HorizontalAlignment="Left" Margin="255,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton_Click" Height="27"/>
+        <Button x:Name="imageButton" Content="Выбрать изображение" HorizontalAlignment="Left" Margin="255,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton_Click" Height="27" FontFamily="Dubai Medium" FontSize="14"/>
         <Image x:Name="imagePreview"  HorizontalAlignment="Left" Height="144" Margin="70,184,0,0" VerticalAlignment="Top" Width="154"/>
-        <Button x:Name="createButton" Content="Создать запись" HorizontalAlignment="Left" Margin="255,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton2_Click" Height="26"/>
+        <Button x:Name="createButton" Content="Создать запись" HorizontalAlignment="Left" Margin="255,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton2_Click" Height="26" FontFamily="Dubai Medium" FontSize="14"/>
         <TextBox x:Name="descTextbox" HorizontalAlignment="Center" Margin="0,66,0,0" TextWrapping="Wrap" Text="Введите описание записи" VerticalAlignment="Top" Width="370" Height="100" />
 
     </Grid>

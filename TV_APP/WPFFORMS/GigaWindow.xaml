@@ -7,10 +7,19 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
-        Height="1080" Width="1920">
-    <Grid Initialized="Grid_Initialized">
-        
-        <Frame x:Name="GigaFrame" NavigationUIVisibility="Hidden" Panel.ZIndex="1"/>
+        Height="1080" Width="1920" KeyDown="Window_KeyDown">
+
+    
+    <Grid Initialized="Grid_Initialized" Background="White">
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Настройки" Click="OptionsClick"/>
+                <MenuItem Header="Закрыть программу" Click="CloseClick"/>
+                <MenuItem Header="Следующее окно" Click="NextClick"/>
+                <MenuItem Header="Предыдущее окно" Click="PrevClick"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+        <Frame x:Name="GigaFrame" NavigationUIVisibility="Hidden" Panel.ZIndex="1" KeyDown="GigaFrame_KeyDown"/>
 
     </Grid>
 </Window>

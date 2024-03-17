@@ -10,9 +10,9 @@
     <Grid>
         <TextBox x:Name="nameEventTextbox" HorizontalAlignment="Center" Margin="0,23,0,0" TextWrapping="Wrap" Text="Введите название мероприятия" VerticalAlignment="Top" Width="370" Height="24"/>
         <DatePicker x:Name="dateEventPicker" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Width="370" Height="60"/>
-        <Button x:Name="imageButton" Content="Выбрать изображение" HorizontalAlignment="Left" Margin="255,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton_Click" Height="27"/>
-        <Image x:Name="imagePreview"  HorizontalAlignment="Left" Height="144" Margin="70,140,0,0" VerticalAlignment="Top" Width="154"/>
-        <Button x:Name="createButton" Content="Создать мероприятие" HorizontalAlignment="Left" Margin="255,255,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton2_Click" Height="26"/>
+        <Button x:Name="imageButton" Content="Выбрать изображение" HorizontalAlignment="Left" Margin="255,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton_Click" Height="32" FontFamily="Dubai Medium" FontSize="14"/>
+        <Image x:Name="imagePreview"  HorizontalAlignment="Left" Height="144" Margin="70,140,0,0" VerticalAlignment="Top" Width="154" />
+        <Button x:Name="createButton" Content="Создать мероприятие" HorizontalAlignment="Left" Margin="255,255,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.434,3.643" Width="185" Click="imageButton2_Click" Height="34" FontFamily="Dubai Medium" FontSize="14"/>
 
     </Grid>
 </Page>

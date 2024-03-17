@@ -15,10 +15,10 @@
 
         <ListBox x:Name="VideoList" Margin="10,25,25,248" Grid.RowSpan="2"  SelectionChanged="VideoList_SelectionChanged"></ListBox>
 
-        <Button Content="Добавить видео" HorizontalAlignment="Center" Margin="0,69,0,0" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Click="Button_Click" />
-        <Button Content="Удалить видео" Click="Button_Click_1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Margin="0,114,0,0"/>
-        <Button Content="Сохранить плейлист в базу данных" HorizontalAlignment="Center" Margin="0,179,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_2"/>
-        <Button Content="Загрузить плейлист из базы данных" HorizontalAlignment="Center" Margin="0,208,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="24" Click="Button_Click_3"/>
+        <Button Content="Добавить видео" HorizontalAlignment="Center" Margin="0,45,0,0" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Click="Button_Click"  FontFamily="Dubai Medium" FontSize="16"/>
+        <Button Content="Удалить видео" Click="Button_Click_1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="352" Margin="0,90,0,0" FontFamily="Dubai Medium" FontSize="16"/>
+        <Button Content="Сохранить плейлист в базу данных" HorizontalAlignment="Center" Margin="0,165,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="31" Click="Button_Click_2"  FontFamily="Dubai Medium" FontSize="14"/>
+        <Button Content="Загрузить плейлист из базы данных" HorizontalAlignment="Center" Margin="0,202,0,0" Grid.Row="1" VerticalAlignment="Top" Width="352" Height="30" Click="Button_Click_3" FontFamily="Dubai Medium" FontSize="14"/>
 
     </Grid>
 </Page>
