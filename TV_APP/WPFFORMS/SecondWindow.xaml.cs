@@ -16,9 +16,7 @@ namespace TV_APP.WPFFORMS
             setting = new Setting2(Mypleer);
             InitializeComponent();
             //DefaultVideo();
-            StartPlay();
-            
-
+            //StartPlay();
         }
 
         
@@ -46,7 +44,7 @@ namespace TV_APP.WPFFORMS
             setting.VideoList.SelectedIndex = index+1;
             setting.mediaElement.Play();
         }
-
+        
         private void StartPlay()
         {
             setting.VideoList.SelectedIndex = 0;
