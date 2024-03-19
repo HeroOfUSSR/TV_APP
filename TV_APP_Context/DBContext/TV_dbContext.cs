@@ -25,8 +25,9 @@ namespace TV_APP_Context.DBContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-DDO84UQ; Initial Catalog=TV_db; Integrated Security=True");
-                //    "Data Source=ORIT-14\\SQLEXPRESS; Initial Catalog=TV_db; User id=Student ORIT ; Password=DabiduN");
+                optionsBuilder.UseSqlServer("Data Source=ORIT-14\\SQLEXPRESS; Initial Catalog=TV_db; User id=Student ORIT ; Password=DabiduN");
+                //  "Data Source=DESKTOP-DDO84UQ; Initial Catalog=TV_db; Integrated Security=True");
+                //    
                 //    
             }
         }
