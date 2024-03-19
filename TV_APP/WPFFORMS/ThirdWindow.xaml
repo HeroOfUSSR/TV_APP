@@ -44,8 +44,8 @@
                         <Image x:Name="newsImage" Height="560" Width="920" Source="/Resources/Placeholder.png"/>
                     </Border>
 
-                    <TextBlock x:Name="newsLabel" Height="194" Width="885" FontSize="48" Margin="5,10,5,5" TextWrapping="Wrap"><Run Text="Событие"/><LineBreak/><Run Language="ru-ru" Text="-Вторая строка"/><LineBreak/><Run Text="-"/><Run Language="ru-ru" Text="Третья строка"/></TextBlock>
-                    <TextBlock x:Name="dateLabel" Text="Дата" Height="207" Width="885" FontSize="36" Margin="5,10,5,5" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="newsLabel" Text="Сегодняшнее событие" Height="194" Width="885" FontSize="48" Margin="5,10,5,5" TextWrapping="Wrap" FontFamily="Dubai Medium" TextTrimming="CharacterEllipsis"/>
+                    <TextBlock x:Name="dateLabel" Text="Дата" Height="207" Width="885" FontSize="36" Margin="5,10,5,5" TextWrapping="Wrap" FontFamily="Dubai Medium" TextTrimming="CharacterEllipsis"/>
                 </StackPanel>
 
             </Grid>
@@ -81,8 +81,8 @@
                         </Border.Clip>
                         <Image x:Name="factImage" Height="560" Width="920" Source="/Resources/Placeholder.png"/>
                     </Border>
-                    <TextBlock x:Name="factLabel" Height="198" Width="885" FontSize="48" TextWrapping="Wrap" Margin="5,10,5,5"><Run Text="Интересный факт/новость"/><LineBreak/><Run Text="-Вторая строка"/><LineBreak/><Run Text="-"/><Run Text="Третья строка"/></TextBlock>
-                    <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="200" Width="885" FontSize="36" TextWrapping="Wrap" Margin="5,10,5,5"/>
+                    <TextBlock x:Name="factLabel" Text="Новость/Факт" Height="198" Width="885" FontSize="48" TextWrapping="Wrap" Margin="5,10,5,5" TextTrimming="CharacterEllipsis" FontFamily="Dubai Medium"/>
+                    <TextBlock x:Name="descLabel" Text="Описание интересного факта/новости" Height="200" Width="885" FontSize="36" TextWrapping="Wrap" Margin="5,10,5,5" TextTrimming="CharacterEllipsis" FontFamily="Dubai Medium"/>
 
                 </StackPanel>
             </Grid>

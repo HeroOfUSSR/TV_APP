@@ -39,6 +39,7 @@ namespace TV_APP.WPFFORMS
         
         private void Mypleer_MediaEnded(object sender, RoutedEventArgs e)
         {
+            /*
             var count = setting.VideoList.Items.Count;
             index = setting.VideoList.SelectedIndex;
 
@@ -47,8 +48,16 @@ namespace TV_APP.WPFFORMS
                 setting.VideoList.SelectedIndex = index + 1;
             }
 
-            //setting.mediaElement.Play();
-            setting.PlayVideo();
+            setting.mediaElement.Play();
+            setting.PlayVideo();*/
+            var count = setting.VideoList.Items.Count;
+            var index = setting.VideoList.SelectedIndex;
+            if (index + 1 >= count)
+            {
+                index = -1;
+            }
+            setting.VideoList.SelectedIndex = index + 1;
+            setting.mediaElement.Play();
         }
 
 

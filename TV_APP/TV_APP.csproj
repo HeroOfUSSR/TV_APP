@@ -8,13 +8,22 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 	<ItemGroup>
+		<None Remove="Resources\Logo.png" />
+		<None Remove="Resources\Placeholder.png" />
 		<None Remove="Video\171124_H1_006.mp4" />
+		<None Remove="Video\180607_A_101.mp4" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Video\171124_H1_006.mp4">
+		<Resource Include="Resources\Logo.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Placeholder.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Video\171124_H1_006.mp4">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
+		</Resource>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -46,6 +55,9 @@
 
 	<ItemGroup>
 		<Resource Include="Resources\unnamed.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Video\180607_A_101.mp4">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 	</ItemGroup>
@@ -114,12 +126,6 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Icons\Placeholder.svg">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\Logo.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\Placeholder.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>

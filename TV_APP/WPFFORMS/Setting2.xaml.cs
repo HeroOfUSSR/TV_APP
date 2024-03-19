@@ -163,7 +163,7 @@ namespace TV_APP.WPFFORMS
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            
+            PlayVideo();
         }
 
     }
